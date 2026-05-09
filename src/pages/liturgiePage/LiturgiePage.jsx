@@ -9,6 +9,11 @@ function LiturgiePage() {
 
   const infosLiturige = location.state;
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(liturgieData);
+  };
+
   return (
     <section className="liturgie-page">
       <div className="infos-liturgie">
@@ -18,7 +23,7 @@ function LiturgiePage() {
         <h3>{infosLiturige.entite}</h3>
       </div>
       <div>
-        <LiturgieForm lectures={lecturesData} />
+        <LiturgieForm lectures={lecturesData} handleSubmit={handleSubmit} />
       </div>
     </section>
   );

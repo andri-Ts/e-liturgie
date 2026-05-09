@@ -22,15 +22,10 @@ function LiturgieForm(props) {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(liturgieData);
-  };
-
   return (
     <section className="liturgie-form">
       <h2>Hira</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={props.handleSubmit}>
         <div className="item">
           <label htmlFor="fidirana">Fidirana</label>
           <input
