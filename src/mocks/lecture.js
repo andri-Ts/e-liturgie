@@ -28,7 +28,7 @@
 
 // ]
 
-const lecturesData = {
+export const lecturesData = {
   boky1: 'Boky mitantara ny Asan’ny Apôstôly',
   andininy1: 'Asa 8, 5-8. 14-17',
   setriny: 'Sal. 65, 1-3a. 4-5. 6-7a. 16 sy 20.',

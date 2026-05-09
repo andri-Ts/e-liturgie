@@ -1,0 +1,16 @@
+.liturgie-page {
+  max-width: 62rem;
+  margin: 2.5rem auto;
+  padding: 1rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infos-liturgie {
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.625rem;
+}

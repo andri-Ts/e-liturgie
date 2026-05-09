@@ -1,0 +1,88 @@
+section {
+  max-width: 60rem;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.625rem;
+}
+
+section h2 {
+  margin: 0 0 1.5rem;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* grille des champs */
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* label */
+.item label {
+  font-size: 0.875rem;
+  color: #444;
+}
+
+/* input */
+.item input {
+  padding: 0.6rem 0.75rem;
+
+  border: 1px solid #d6d6d6;
+  border-radius: 0.375rem;
+
+  font-size: 0.875rem;
+
+  outline: none;
+  background: #fff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.item input:focus {
+  border-color: #1e9100;
+  box-shadow: 0 0 0 3px rgba(30, 145, 0, 0.12);
+}
+
+/* bouton */
+button {
+  margin-top: 1rem;
+  align-self: flex-start;
+
+  padding: 0.625rem 1.25rem;
+
+  border: none;
+  border-radius: 0.375rem;
+
+  background-color: #1e9100;
+  color: #fff;
+
+  font-size: 0.875rem;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #166d00;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}

@@ -1,6 +1,8 @@
 import React from 'react';
-import FormField from '../../components/formField/FormField';
 import { useLocation } from 'react-router-dom';
+import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
+import './liturgiePage.css';
+import { lecturesData } from '../../mocks/lecture';
 
 function LiturgiePage() {
   const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
@@ -8,14 +10,15 @@ function LiturgiePage() {
   const infosLiturige = location.state;
 
   return (
-    <section className="lecture-page">
-      <div className="infos">
+    <section className="liturgie-page">
+      <div className="infos-liturgie">
         <h2>Informations générales</h2>
-        <div className="fields-row">
-          <FormField type="date" label="Daty" name="date" />
-          <FormField type="text" label="Andro litorjika" name="jour" />
-          <FormField type="text" label="Vondrona" name="entite" />
-        </div>
+        <h3>{infosLiturige.date}</h3>
+        <h3>{infosLiturige.jour}</h3>
+        <h3>{infosLiturige.entite}</h3>
+      </div>
+      <div>
+        <LiturgieForm lectures={lecturesData} />
       </div>
     </section>
   );
