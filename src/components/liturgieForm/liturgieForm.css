@@ -1,4 +1,4 @@
-section {
+.liturgie-form {
   max-width: 60rem;
   margin: 2.5rem auto;
   padding: 1.5rem;
@@ -8,7 +8,7 @@ section {
   border-radius: 0.625rem;
 }
 
-section h2 {
+.liturgie-form h2 {
   margin: 0 0 1.5rem;
 
   font-size: 1.25rem;
@@ -16,27 +16,27 @@ section h2 {
   color: #222;
 }
 
-form {
+.liturgie-form form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
 /* grille des champs */
-.item {
+.liturgie-form .item {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
 /* label */
-.item label {
+.liturgie-form .item label {
   font-size: 0.875rem;
   color: #444;
 }
 
 /* input */
-.item input {
+.liturgie-form .item input {
   padding: 0.6rem 0.75rem;
 
   border: 1px solid #d6d6d6;
@@ -52,15 +52,15 @@ form {
     box-shadow 0.2s ease;
 }
 
-.item input:focus {
+.liturgie-form .item input:focus {
   border-color: #1e9100;
   box-shadow: 0 0 0 3px rgba(30, 145, 0, 0.12);
 }
 
 /* bouton */
-button {
+.liturgie-form button {
   margin-top: 1rem;
-  align-self: flex-start;
+  align-self: center;
 
   padding: 0.625rem 1.25rem;
 
@@ -78,11 +78,11 @@ button {
     transform 0.2s ease;
 }
 
-button:hover {
+.liturgie-form button:hover {
   background-color: #166d00;
   transform: translateY(-1px);
 }
 
-button:active {
+.liturgie-form button:active {
   transform: translateY(0);
 }

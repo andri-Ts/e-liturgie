@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import './liturgieForm.css';
 
-function LiturgieForm({ lectures }) {
+function LiturgieForm(props) {
   const [liturgieData, setLiturgieData] = useState({
     fidirana: '',
     fifonana: '',
     voninahitra: '',
-    boky1: lectures?.andininy1 || '',
-    setriny: lectures?.setriny || '',
-    boky2: lectures?.andininy2 || '',
+    boky1: props.lectures?.andininy1 || '',
+    setriny: props.lectures?.setriny || '',
+    boky2: props.lectures?.andininy2 || '',
     aleloia: '',
     fihobiana: '',
-    boky3: lectures?.andininy3 || '',
+    boky3: props.lectures?.andininy3 || '',
   });
 
   const handleChange = (e) => {
@@ -28,7 +28,7 @@ function LiturgieForm({ lectures }) {
   };
 
   return (
-    <section>
+    <section className="liturgie-form">
       <h2>Hira</h2>
       <form onSubmit={handleSubmit}>
         <div className="item">
