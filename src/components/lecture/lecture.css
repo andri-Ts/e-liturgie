@@ -1,0 +1,29 @@
+article {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 0.625rem;
+  border: 1px solid #e5e5e5;
+}
+
+article h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
+article span {
+  display: block;
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+article p {
+  margin: 0;
+  line-height: 1.7;
+  color: #333;
+  white-space: pre-line;
+}
