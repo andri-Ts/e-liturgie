@@ -3,10 +3,12 @@ import FormField from '../../components/formField/FormField';
 import './lecturePage.css';
 import Lecture from '../../components/lecture/Lecture';
 import { mockLectures } from '../../mocks/lecture';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LecturePage() {
   const [readingShow, setReadingShow] = useState(false); // pour fiare apparaître les lectures
+  const [infos, setInfos] = useState(null);
+  const nav = useNavigate();
 
   const toggleReading = async () => {
     setReadingShow((prev) => !prev);
@@ -15,15 +17,23 @@ function LecturePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Récupérer le form
+    // Récupérer les data du form et le stocker deans un Object
     const formData = new FormData(e.target);
-    const dateForm = formData.get('date');
-    const jourForm = formData.get('jour');
-    const entiteForm = formData.get('entite');
-
-    // console.log('date: ', dateForm);
+    const dataform = {
+      date: formData.get('date'),
+      jour: formData.get('jour'),
+      entite: formData.get('entite'),
+    };
+    setInfos(dataform);
 
     toggleReading();
+  };
+
+  // pour envoyer les data du formulaire vers la page suivante
+  const handleNext = () => {
+    nav('/liturgie', {
+      state: infos,
+    });
   };
 
   return (
@@ -45,9 +55,7 @@ function LecturePage() {
           {mockLectures.map((lecture, index) => (
             <Lecture key={index} titre={lecture.titre} ref={lecture.ref} />
           ))}
-          <Link to={'/liturgie'} className="btn-style">
-            Suivant
-          </Link>
+          <button onClick={handleNext}>Suivant</button>
         </div>
       )}
     </section>
