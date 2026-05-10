@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import './liturgieForm.css';
 
-function LiturgieForm(props) {
-  const [liturgieData, setLiturgieData] = useState({
-    fidirana: '',
-    fifonana: '',
-    voninahitra: '',
-    boky1: props.lectures?.andininy1 || '',
-    setriny: props.lectures?.setriny || '',
-    boky2: props.lectures?.andininy2 || '',
-    aleloia: '',
-    fihobiana: '',
-    boky3: props.lectures?.andininy3 || '',
-  });
-
+function LiturgieForm({ liturgieData, setLiturgieData, handleSubmit }) {
   const handleChange = (e) => {
     const { name, value } = e.target; // contient les valeurs tapés par l'useSearchParams
     setLiturgieData((prev) => ({
@@ -25,7 +13,7 @@ function LiturgieForm(props) {
   return (
     <section className="liturgie-form">
       <h2>Hira</h2>
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="item">
           <label htmlFor="fidirana">Fidirana</label>
           <input
@@ -117,7 +105,7 @@ function LiturgieForm(props) {
             value={liturgieData.boky3}
           />
         </div>
-        <button>Valider</button>
+        <button type="submit">Valider</button>
       </form>
     </section>
   );
