@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
 import './liturgiePage.css';
 import { lecturesData } from '../../mocks/lecture';
+import downloadPdf from '../../utils/downloadPdf';
 
 function LiturgiePage() {
   const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
@@ -22,6 +23,7 @@ function LiturgiePage() {
     fihobiana: '',
     boky3: lecturesData?.andininy3 || '',
   });
+  const [isValidate, setIsValidate] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +36,7 @@ function LiturgiePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(liturgieData);
+    setIsValidate(true);
   };
 
   return (
@@ -73,14 +76,18 @@ function LiturgiePage() {
           </div>
         </div>
       </div>
-      <div>
+      <div id="pdf-content">
         <LiturgieForm
           liturgieData={liturgieData}
           setLiturgieData={setLiturgieData}
           handleSubmit={handleSubmit}
         />
       </div>
-      <button className="btn-pdf">Télécharger en pdf</button>
+      {isValidate && (
+        <button className="btn-pdf" onClick={() => downloadPdf()}>
+          Télécharger en pdf
+        </button>
+      )}
     </section>
   );
 }
