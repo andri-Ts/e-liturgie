@@ -41,7 +41,7 @@ function LiturgiePage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(liturgieData);
+    // console.log(liturgieData);
     setIsValidate(true);
   };
 
@@ -61,9 +61,9 @@ function LiturgiePage() {
                 name="date"
                 onChange={handleChange}
                 value={liturgieData.date}
+                readOnly
               />
             </div>
-
             <div className="item">
               <label htmlFor="jour">Andro</label>
 
@@ -73,9 +73,9 @@ function LiturgiePage() {
                 name="jour"
                 onChange={handleChange}
                 value={liturgieData.jour}
+                readOnly
               />
             </div>
-
             <div className="item">
               <label htmlFor="entite">Vondrona</label>
 

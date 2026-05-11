@@ -20,19 +20,19 @@ function LecturePage() {
           texte: lecturesData.fehiny1,
         },
         {
-          titre: lecturesData.boky1,
-          ref: lecturesData.andininy1,
-          texte: lecturesData.fehiny1,
+          titre: lecturesData.setriny,
+          ref: lecturesData.setriny,
+          texte: lecturesData.setriny,
         },
         {
-          titre: lecturesData.boky1,
-          ref: lecturesData.andininy1,
-          texte: lecturesData.fehiny1,
+          titre: lecturesData.boky3,
+          ref: lecturesData.andininy3,
+          texte: lecturesData.fehiny3,
         },
         {
-          titre: lecturesData.boky1,
-          ref: lecturesData.andininy1,
-          texte: lecturesData.fehiny1,
+          titre: lecturesData.boky2,
+          ref: lecturesData.andininy2,
+          texte: lecturesData.fehiny2,
         },
       ]
     : [];
