@@ -31,7 +31,7 @@ function LecturePage() {
     const resLectureData = await apiRequest.post('/Sorona/Vakiteny', {
       date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
     });
-    console.log(resLectureData);
+    console.log(resLectureData.data);
 
     // toggleReading();
   };
