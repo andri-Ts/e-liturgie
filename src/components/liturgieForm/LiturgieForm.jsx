@@ -12,7 +12,7 @@ function LiturgieForm({ liturgieData, setLiturgieData }) {
 
   return (
     <section className="liturgie-form">
-      <h2>Hira</h2>
+      {/* <h2>Hira</h2> */}
       <div className="item">
         <label htmlFor="fidirana">Fidirana</label>
         <input

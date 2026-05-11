@@ -25,6 +25,12 @@ function LiturgiePage() {
   });
   const [isValidate, setIsValidate] = useState(false);
 
+  // appel la fonction pdf
+  const handleValidate = () => {
+    downloadPdf();
+    setIsValidate(false);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLiturgieData((prev) => ({
@@ -41,48 +47,45 @@ function LiturgiePage() {
 
   return (
     <section className="liturgie-page">
+      <h2>Fanomamanana ny hira</h2>
       <form onSubmit={handleSubmit}>
         {/* PDF */}
         <div id="pdf-content">
           <div className="infos-liturgie">
-            <h2>Informations générales</h2>
+            <div className="item">
+              <label htmlFor="date">Daty</label>
 
-            <div>
-              <div className="item">
-                <label htmlFor="date">Daty</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                onChange={handleChange}
+                value={liturgieData.date}
+              />
+            </div>
 
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  onChange={handleChange}
-                  value={liturgieData.date}
-                />
-              </div>
+            <div className="item">
+              <label htmlFor="jour">Andro</label>
 
-              <div className="item">
-                <label htmlFor="jour">Andro</label>
+              <input
+                type="text"
+                id="jour"
+                name="jour"
+                onChange={handleChange}
+                value={liturgieData.jour}
+              />
+            </div>
 
-                <input
-                  type="text"
-                  id="jour"
-                  name="jour"
-                  onChange={handleChange}
-                  value={liturgieData.jour}
-                />
-              </div>
+            <div className="item">
+              <label htmlFor="entite">Vondrona</label>
 
-              <div className="item">
-                <label htmlFor="entite">Vondrona</label>
-
-                <input
-                  type="text"
-                  id="entite"
-                  name="entite"
-                  onChange={handleChange}
-                  value={liturgieData.entite}
-                />
-              </div>
+              <input
+                type="text"
+                id="entite"
+                name="entite"
+                onChange={handleChange}
+                value={liturgieData.entite}
+              />
             </div>
           </div>
 
@@ -97,7 +100,7 @@ function LiturgiePage() {
           <button type="submit">Valider</button>
 
           {isValidate && (
-            <button type="button" className="btn-pdf" onClick={downloadPdf}>
+            <button type="button" className="btn-pdf" onClick={handleValidate}>
               Télécharger PDF
             </button>
           )}
