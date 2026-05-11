@@ -54,7 +54,7 @@ function LiturgieForm({ liturgieData, setLiturgieData }) {
         />
       </div>
       <div className="item">
-        <label htmlFor="setriny">setriny</label>
+        <label htmlFor="setriny">Salamo</label>
         <input
           type="text"
           id="setriny"

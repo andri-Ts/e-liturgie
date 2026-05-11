@@ -93,7 +93,6 @@ function LiturgiePage() {
         </div>
 
         {/* ACTIONS */}
-
         <div className="actions">
           <button type="submit">Valider</button>
 
