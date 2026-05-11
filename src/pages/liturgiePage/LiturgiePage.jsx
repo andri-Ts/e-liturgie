@@ -7,7 +7,7 @@ import { lecturesData } from '../../mocks/lecture';
 function LiturgiePage() {
   const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
   const { infos, lecturesData } = location.state || {};
-  console.log(location.state);
+  // console.log(location.state);
   const [liturgieData, setLiturgieData] = useState({
     date: infos.date || '',
     jour: infos.jour || '',
@@ -80,6 +80,7 @@ function LiturgiePage() {
           handleSubmit={handleSubmit}
         />
       </div>
+      <button className="btn-pdf">Télécharger en pdf</button>
     </section>
   );
 }
