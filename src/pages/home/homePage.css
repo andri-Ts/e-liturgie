@@ -1,0 +1,75 @@
+/* homePage.css */
+
+.home-page {
+  min-height: calc(100vh - 90px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  background: #f8f9fa;
+}
+
+.home-card {
+  width: 100%;
+  max-width: 700px;
+
+  background: white;
+
+  padding: 4rem 3rem;
+
+  border-radius: 24px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid #f1f1f1;
+}
+
+.home-card h1 {
+  font-size: 3rem;
+
+  color: #111;
+
+  margin-bottom: 1rem;
+}
+
+.home-card p {
+  font-size: 1.1rem;
+
+  color: #555;
+
+  line-height: 1.7;
+
+  margin-bottom: 2.5rem;
+}
+
+.start-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 52px;
+
+  padding: 0 2rem;
+
+  background: #1e9100;
+
+  color: white;
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.start-btn:hover {
+  background: #176f00;
+
+  transform: translateY(-2px);
+}
