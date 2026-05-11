@@ -4,6 +4,7 @@ import './lecturePage.css';
 import Lecture from '../../components/lecture/Lecture';
 import { mockLectures } from '../../mocks/lecture';
 import { Link, useNavigate } from 'react-router-dom';
+import apiRequest from '../../libs/apiRequest';
 
 function LecturePage() {
   const [readingShow, setReadingShow] = useState(false); // pour fiare apparaître les lectures
@@ -25,8 +26,14 @@ function LecturePage() {
       entite: formData.get('entite'),
     };
     setInfos(dataform);
+    // console.log(dataform);
 
-    toggleReading();
+    const resLectureData = await apiRequest.post('/Sorona/Vakiteny', {
+      date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
+    });
+    console.log(resLectureData);
+
+    // toggleReading();
   };
 
   // pour envoyer les data du formulaire vers la page suivante
