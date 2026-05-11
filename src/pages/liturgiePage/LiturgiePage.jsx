@@ -41,53 +41,69 @@ function LiturgiePage() {
 
   return (
     <section className="liturgie-page">
-      <div className="infos-liturgie">
-        <h2>Informations générales</h2>
-        <div>
-          <div className="item">
-            <label htmlFor="date">Daty</label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              onChange={handleChange}
-              value={liturgieData.date}
-            />
+      <form onSubmit={handleSubmit}>
+        {/* PDF */}
+        <div id="pdf-content">
+          <div className="infos-liturgie">
+            <h2>Informations générales</h2>
+
+            <div>
+              <div className="item">
+                <label htmlFor="date">Daty</label>
+
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  onChange={handleChange}
+                  value={liturgieData.date}
+                />
+              </div>
+
+              <div className="item">
+                <label htmlFor="jour">Andro</label>
+
+                <input
+                  type="text"
+                  id="jour"
+                  name="jour"
+                  onChange={handleChange}
+                  value={liturgieData.jour}
+                />
+              </div>
+
+              <div className="item">
+                <label htmlFor="entite">Vondrona</label>
+
+                <input
+                  type="text"
+                  id="entite"
+                  name="entite"
+                  onChange={handleChange}
+                  value={liturgieData.entite}
+                />
+              </div>
+            </div>
           </div>
-          <div className="item">
-            <label htmlFor="jour">Andro</label>
-            <input
-              type="text"
-              id="jour"
-              name="jour"
-              onChange={handleChange}
-              value={liturgieData.jour}
-            />
-          </div>
-          <div className="item">
-            <label htmlFor="entite">Vondrona</label>
-            <input
-              type="text"
-              id="entite"
-              name="entite"
-              onChange={handleChange}
-              value={liturgieData.entite}
-            />
-          </div>
+
+          <LiturgieForm
+            liturgieData={liturgieData}
+            setLiturgieData={setLiturgieData}
+          />
         </div>
-      </div>
-      <div id="pdf-content">
-        <LiturgieForm
-          liturgieData={liturgieData}
-          setLiturgieData={setLiturgieData}
-          handleSubmit={handleSubmit}
-        />
-      </div>
-      {isValidate && (
-        <button className="btn-pdf" onClick={() => downloadPdf()}>
-          Télécharger en pdf
-        </button>
-      )}
+
+        {/* ACTIONS */}
+
+        <div className="actions">
+          <button type="submit">Valider</button>
+
+          {isValidate && (
+            <button type="button" className="btn-pdf" onClick={downloadPdf}>
+              Télécharger PDF
+            </button>
+          )}
+        </div>
+      </form>
     </section>
   );
 }
