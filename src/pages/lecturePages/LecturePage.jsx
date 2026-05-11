@@ -7,8 +7,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import apiRequest from '../../libs/apiRequest';
 
 function LecturePage() {
-  const [readingShow, setReadingShow] = useState(false); // pour fiare apparaître les lectures
-  const [infos, setInfos] = useState(null);
+  const [readingShow, setReadingShow] = useState(false); // pour faire apparaître les lectures
+  const [infos, setInfos] = useState(null); // infos globales
+  const [lecturesData, setLecturesData] = useState(null); // infos sur les lectures
   const nav = useNavigate();
 
   const toggleReading = async () => {
@@ -28,18 +29,26 @@ function LecturePage() {
     setInfos(dataform);
     // console.log(dataform);
 
-    const resLectureData = await apiRequest.post('/Sorona/Vakiteny', {
-      date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
-    });
-    console.log(resLectureData.data);
+    try {
+      const resLectureData = await apiRequest.post('/Sorona/Vakiteny', {
+        date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
+      });
+      setLecturesData(resLectureData.data);
+      console.log(lecturesData);
+    } catch (error) {
+      console.log(error);
+    }
 
-    // toggleReading();
+    toggleReading();
   };
 
   // pour envoyer les data du formulaire vers la page suivante
   const handleNext = () => {
     nav('/liturgie', {
-      state: infos,
+      state: {
+        infos,
+        lecturesData,
+      },
     });
   };
 

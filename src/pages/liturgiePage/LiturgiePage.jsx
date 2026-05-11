@@ -6,11 +6,12 @@ import { lecturesData } from '../../mocks/lecture';
 
 function LiturgiePage() {
   const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
-  const initialeInfos = location.state || {};
+  const { infos, lecturesData } = location.state || {};
+  console.log(location.state);
   const [liturgieData, setLiturgieData] = useState({
-    date: initialeInfos.date || '',
-    jour: initialeInfos.jour || '',
-    entite: initialeInfos.entite || '',
+    date: infos.date || '',
+    jour: infos.jour || '',
+    entite: infos.entite || '',
     fidirana: '',
     fifonana: '',
     voninahitra: '',
