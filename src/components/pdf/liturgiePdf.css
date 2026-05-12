@@ -1,0 +1,51 @@
+.pdf-container {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  font-family: Georgia, serif;
+  background: white;
+  color: black;
+}
+
+/* HEADER */
+.pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15mm;
+}
+
+.pdf-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.pdf-subtitle {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.pdf-logo {
+  width: 60px;
+}
+
+/* SECTIONS */
+.section {
+  margin-bottom: 6mm;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  margin-bottom: 2mm;
+  padding-bottom: 1mm;
+}
+
+.section-content {
+  font-size: 12.5px;
+  line-height: 1.5;
+}
