@@ -84,9 +84,6 @@ function LecturePage() {
         <h2>Informations générales</h2>
         <form onSubmit={handleSubmit}>
           <div className="fields-row">
-            {/* <FormField type="date" label="Daty" name="date" />
-            <FormField type="text" label="Andro litorjika" name="jour" />
-            <FormField type="text" label="Vondrona" name="entite" /> */}
             <div className="form-field">
               <label htmlFor="date">Daty</label>
               <input type="date" id="date" name="date" />
