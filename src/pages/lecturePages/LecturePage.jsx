@@ -17,7 +17,7 @@ function LecturePage() {
         {
           titre: lecturesData.boky1,
           ref: lecturesData.andininy1,
-          texte: lecturesData.fehiny1,
+          texte: lecturesData.vakiteny1,
         },
         {
           titre: lecturesData.setriny,
@@ -27,12 +27,12 @@ function LecturePage() {
         {
           titre: lecturesData.boky3,
           ref: lecturesData.andininy3,
-          texte: lecturesData.fehiny3,
+          texte: lecturesData.vakiteny3,
         },
         {
           titre: lecturesData.boky2,
           ref: lecturesData.andininy2,
-          texte: lecturesData.fehiny2,
+          texte: lecturesData.vakiteny2,
         },
       ]
     : [];
