@@ -1,37 +1,21 @@
+import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-import html2canvas from 'html2canvas';
+export default function downloadPdf() {
+  const input = document.querySelector('.pdf-container');
 
-const downloadPdf = async () => {
-  const element = document.getElementById('pdf-content');
+  html2canvas(input, {
+    scale: 2,
+    useCORS: true,
+  }).then((canvas) => {
+    const imgData = canvas.toDataURL('image/png');
 
-  // capture du HTML
-  const canvas = await html2canvas(element, {
-    scale: 2, // meilleure qualité
+    const pdf = new jsPDF('p', 'mm', 'a4');
+
+    const pdfWidth = 210;
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('liturgie.pdf');
   });
-
-  // transforme en image
-  const imageData = canvas.toDataURL('image/png');
-
-  // création pdf
-  const pdf = new jsPDF({
-    orientation: 'portrait',
-
-    unit: 'mm',
-
-    format: 'a4',
-  });
-
-  // dimensions PDF
-  const pdfWidth = pdf.internal.pageSize.getWidth();
-
-  const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-  // ajoute image
-  pdf.addImage(imageData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-
-  // télécharge
-  pdf.save('liturgie.pdf');
-};
-
-export default downloadPdf;
+}

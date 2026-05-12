@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
 import './liturgiePage.css';
 import downloadPdf from '../../utils/downloadPdf';
+import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 
 function LiturgiePage() {
   const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
@@ -117,6 +118,19 @@ function LiturgiePage() {
             </button>
           )}
         </div>
+
+        {/* 👇 PDF RENDER (HIDDEN POUR EXPORT UNIQUEMENT) */}
+        {isValidate && (
+          <div
+            style={{
+              position: 'absolute',
+              left: '-9999px',
+              top: 0,
+            }}
+          >
+            <LiturgiePdfTemplate data={liturgieData} />
+          </div>
+        )}
       </form>
     </section>
   );
