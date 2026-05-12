@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './lecturePage.css';
 import Lecture from '../../components/lecture/Lecture';
-import { mockLectures } from '../../mocks/lecture';
 import { Link, useNavigate } from 'react-router-dom';
 import apiRequest from '../../libs/apiRequest';
 
