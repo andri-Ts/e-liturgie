@@ -1,6 +1,8 @@
 import './liturgiePdf.css';
 
 export default function LiturgiePdfTemplate({ data }) {
+  console.log(data);
+
   return (
     <div id="pdf-content" className="pdf-container">
       <div className="pdf-header">
@@ -62,14 +64,38 @@ export default function LiturgiePdfTemplate({ data }) {
       </div>
 
       <div className="section">
+        <div className="section-title">Ranombavaka</div>
+        <div className="section-content">{data.ranombavaka}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
         <div className="section-title">Rakitra</div>
         <div className="section-content">{data.rakitra}</div>
         <div className="section-page"></div>
       </div>
 
       <div className="section">
-        <div className="section-title">Komonio</div>
-        <div className="section-content">{data.komonio}</div>
+        <div className="section-title">Rakitra</div>
+        <div className="section-content">{data.rakitra}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Fanolorana</div>
+        <div className="section-content">{data.fanolorana}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Masina</div>
+        <div className="section-content">{data.masina}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Anamnese</div>
+        <div className="section-content">{data.anamnese}</div>
         <div className="section-page"></div>
       </div>
 
