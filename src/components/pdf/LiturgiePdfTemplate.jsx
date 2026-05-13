@@ -50,7 +50,7 @@ export default function LiturgiePdfTemplate({ data }) {
       </div>
 
       <div className="section">
-        <div className="section-title">Evangile</div>
+        <div className="section-title">Evanjely</div>
         <div className="section-content">{data.boky3}</div>
         <div className="section-page"></div>
       </div>

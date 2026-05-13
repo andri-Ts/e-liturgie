@@ -27,4 +27,4 @@ dist-ssr
 .env.local
 .env.development
 .env.production
-.md
+*.md

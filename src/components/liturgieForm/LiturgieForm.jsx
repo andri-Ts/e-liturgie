@@ -84,7 +84,7 @@ function LiturgieForm({ liturgieData, setLiturgieData }) {
         />
       </div>
       <div className="item">
-        <label htmlFor="aleloia">aleloia</label>
+        <label htmlFor="aleloia">Aleloia</label>
         <input
           type="text"
           id="aleloia"
@@ -104,7 +104,7 @@ function LiturgieForm({ liturgieData, setLiturgieData }) {
         />
       </div>
       <div className="item">
-        <label htmlFor="evanjely">evanjely</label>
+        <label htmlFor="evanjely">Evanjely</label>
         <input
           type="text"
           id="boky3"
