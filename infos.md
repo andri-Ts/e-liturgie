@@ -145,4 +145,14 @@ Parce que tu as créé :
 
 ---
 
-Si tu veux, je peux te dessiner exactement ton architecture complète (frontend → Netlify → API → CORS) pour que tu comprennes tout ton flow 👍
+# Architecture
+
+src/
+├── components/
+├── pages/
+├── hooks/
+├── utils/
+├── libs/
+├── services/
+├── api/
+└── assets/
