@@ -9,7 +9,7 @@
 
   background: #fff;
 
-  border: 1px solid #dcdcdc; /* légèrement ajusté */
+  /*border: 1px solid #dcdcdc; /* légèrement ajusté */
   border-radius: 0.75rem;
 
   box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.05);
@@ -176,7 +176,7 @@
 
   padding: 0.65rem 0.8rem;
 
-  border-left: 2px solid #1e9300; /* vert discret */
+  border-left: 2px solid #d8c66a; /* vert discret */
 
   font-size: 0.78rem;
   font-weight: 600;

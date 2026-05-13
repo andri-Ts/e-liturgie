@@ -8,7 +8,11 @@ function Header() {
       <h1>
         <Link to={'/'}>FKMP</Link>
       </h1>
-      <p>Fanomanana litorjia</p>
+      <p>
+        <Link to={'/lecture'}>
+          <strong>Fanomanana litorjia</strong>
+        </Link>
+      </p>
     </header>
   );
 }

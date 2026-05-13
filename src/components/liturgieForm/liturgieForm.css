@@ -25,6 +25,7 @@
   flex-shrink: 0; /*“ne rétrécis jamais ce label"*/
 
   font-size: 0.875rem;
+  font-weight: 550;
   color: #444;
 }
 

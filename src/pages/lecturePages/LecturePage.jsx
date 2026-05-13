@@ -85,7 +85,7 @@ function LecturePage() {
           <div className="fields-row">
             <div className="form-field">
               <label htmlFor="date">Daty</label>
-              <input type="date" id="date" name="date" />
+              <input type="date" id="date" name="date" required />
             </div>
             <div className="form-field">
               <label htmlFor="jour">Andro litorjika</label>
