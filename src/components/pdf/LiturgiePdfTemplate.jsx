@@ -15,7 +15,7 @@ export default function LiturgiePdfTemplate({ data }) {
         </div>
         <div className="right">
           <img src="/logo.png" className="pdf-logo" />
-          <div className="pdf-date">17/05/2026</div>
+          <div className="pdf-date">17 Mai 2026</div>
         </div>
       </div>
 

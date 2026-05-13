@@ -5,7 +5,7 @@ export default async function downloadPdf() {
   const input = document.querySelector('.pdf-container');
 
   const canvas = await html2canvas(input, {
-    scale: 2,
+    scale: 4,
     useCORS: true,
     backgroundColor: '#ffffff',
   });
@@ -16,6 +16,7 @@ export default async function downloadPdf() {
     orientation: 'p',
     unit: 'mm',
     format: 'a4',
+    letterRendering: true,
   });
 
   // Taille A4
