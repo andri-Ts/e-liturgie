@@ -21,68 +21,68 @@ export default function LiturgiePdfTemplate({ data }) {
 
       <div className="section">
         <div className="section-title">Fidirana</div>
-        <div className="section-content">fidirana</div>
-        <div className="section-page">156</div>
+        <div className="section-content">{data.fidirana}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Fifonana</div>
-        <div className="section-content">fifonana</div>
-        <div className="section-page">78</div>
+        <div className="section-content">{data.fifonana}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Vakiteny 1</div>
-        <div className="section-content">boky1</div>
-        <div className="section-page">67</div>
+        <div className="section-content">{data.boky1}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Salamo</div>
-        <div className="section-content">salamo</div>
-        <div className="section-page">78</div>
+        <div className="section-content">{data.salamo}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Vakiteny 2</div>
-        <div className="section-content">boky2</div>
-        <div className="section-page">54</div>
+        <div className="section-content">{data.boky2}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Evangile</div>
-        <div className="section-content">boky3</div>
-        <div className="section-page">45</div>
+        <div className="section-content">{data.boky3}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Fiekem-pinoana</div>
-        <div className="section-content">credo</div>
-        <div className="section-page">58</div>
+        <div className="section-content">{data.credo}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Rakitra</div>
-        <div className="section-content">rakitra</div>
-        <div className="section-page">7</div>
+        <div className="section-content">{data.rakitra}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Komonio</div>
-        <div className="section-content">komonio</div>
-        <div className="section-page">87</div>
+        <div className="section-content">{data.komonio}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Fisaorana</div>
-        <div className="section-content">fisaorana</div>
-        <div className="section-page">78</div>
+        <div className="section-content">{data.fisaorana}</div>
+        <div className="section-page"></div>
       </div>
 
       <div className="section">
         <div className="section-title">Fanirahana</div>
-        <div className="section-content">fanirahana</div>
-        <div className="section-page">78</div>
+        <div className="section-content">{data.fanirahana}</div>
+        <div className="section-page"></div>
       </div>
     </div>
   );
