@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiRequest = axios.create({
-  baseURL: '/vakitenyApi',
+  baseURL: '/.netlify/functions/vakitenyApi',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -6,9 +6,12 @@ exports.handler = async function (event) {
     const body = JSON.parse(event.body);
 
     // envoyer une requête POST vers ton backend
-    const response = await axios.post('http://72.61.166.33:5000/', {
-      date: body.date, // envoyer seulement la date reçue du frontend
-    });
+    const response = await axios.post(
+      'http://72.61.166.33:5000/api/Sorona/Vakiteny',
+      {
+        date: body.date, // envoyer seulement la date reçue du frontend
+      },
+    );
 
     // renvoyer la réponse du backend vers le frontend React
     return {
