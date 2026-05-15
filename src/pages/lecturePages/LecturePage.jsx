@@ -10,7 +10,7 @@ function LecturePage() {
   const [lecturesData, setLecturesData] = useState(null); // infos sur les lectures
   const nav = useNavigate();
 
-  // formatage des données api en tab
+  // formatage des données api lectures en tab
   const formatLectures = lecturesData
     ? [
         {
@@ -21,7 +21,7 @@ function LecturePage() {
         {
           titre: lecturesData.setriny,
           ref: lecturesData.setriny,
-          texte: lecturesData.setriny,
+          texte: lecturesData.salamo,
         },
         {
           titre: lecturesData.boky3,
@@ -55,7 +55,7 @@ function LecturePage() {
 
     // appel api pour recevoir les ref des textes (selon la date)
     try {
-      const resLectureData = await apiRequest.post('/Sorona/Vakiteny', {
+      const resLectureData = await apiRequest.post('/api/Sorona/Vakiteny', {
         date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
       });
       console.log(resLectureData);
