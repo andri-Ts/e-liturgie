@@ -93,7 +93,7 @@ function LecturePage() {
                 type="text"
                 id="jour"
                 name="jour"
-                defaultValue={lecturesData.androLitorjika}
+                defaultValue={lecturesData?.androLitorjika || ''}
               />
             </div>
             <div className="form-field">
