@@ -8,16 +8,14 @@ export default function LiturgiePdfTemplate({ data }) {
       <div className="pdf-header">
         <div className="left">
           <div className="pdf-title">Litorjia FKMP</div>
-          <div className="pdf-infos">
-            ALAHADY faha-3 • ANDAVANANDRO • Taona A
-          </div>
+          <div className="pdf-infos">{data.jour}</div>
           <div className="pdf-entite">
-            <strong>Mpanomana:</strong> Fifandraisana
+            <strong>Mpanomana:</strong> {data.entite}
           </div>
         </div>
         <div className="right">
           <img src="/logo.png" className="pdf-logo" />
-          <div className="pdf-date">17 Mai 2026</div>
+          <div className="pdf-date">{data.date}</div>
         </div>
       </div>
 

@@ -89,7 +89,12 @@ function LecturePage() {
             </div>
             <div className="form-field">
               <label htmlFor="jour">Andro litorjika</label>
-              <input type="text" id="jour" name="jour" />
+              <input
+                type="text"
+                id="jour"
+                name="jour"
+                defaultValue={lecturesData.androLitorjika}
+              />
             </div>
             <div className="form-field">
               <label htmlFor="entite">Vondrona</label>
