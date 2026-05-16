@@ -55,7 +55,7 @@ function LecturePage() {
 
     // appel api pour recevoir les ref des textes (selon la date)
     try {
-      const resLectureData = await apiRequest.post('', {
+      const resLectureData = await apiRequest.post('/vakitenyApi', {
         date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
       });
       console.log(resLectureData);
