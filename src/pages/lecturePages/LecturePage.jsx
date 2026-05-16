@@ -7,8 +7,7 @@ import InfosForm from '../../components/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
 
 function LecturePage() {
-  // const [readingShow, setReadingShow] = useState(false); // pour faire apparaître les lectures
-  // // infos globales formulaire
+  // infos globales formulaire
   const [infosData, setInfosData] = useState({
     date: '',
     jour: '',
@@ -20,11 +19,6 @@ function LecturePage() {
   // formatage des données api lectures en tab
   const formattedLectures = buildLectures(lecturesData);
 
-  // Faire appraître les textes de la lecture
-  // const toggleReading = async () => {
-  //   setReadingShow((prev) => !prev);
-  // };
-
   // submit formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +27,6 @@ function LecturePage() {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(infosData.date).toISOString(),
       });
-
       setLecturesData(response.data);
 
       // remplir automatiquement le jour liturgique

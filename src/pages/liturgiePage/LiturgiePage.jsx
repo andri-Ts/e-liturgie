@@ -7,7 +7,7 @@ import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 
 function LiturgiePage() {
   const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
-  const { infos, lecturesData } = location.state || {};
+  // const { infos, lecturesData } = location.state || {};
   console.log(location.state);
   const [liturgieData, setLiturgieData] = useState({
     date: infos.date || '',
