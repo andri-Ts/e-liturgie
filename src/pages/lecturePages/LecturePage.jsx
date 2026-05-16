@@ -55,7 +55,7 @@ function LecturePage() {
 
     // appel api pour recevoir les ref des textes (selon la date)
     try {
-      const resLectureData = await apiRequest.post('/vakitenyApi', {
+      const resLectureData = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(dataform.date).toISOString(), // on ne renvoye que la date en format '2026-05-11T00:00:00.000Z' avec new Date()
       });
       console.log(resLectureData);
@@ -93,7 +93,7 @@ function LecturePage() {
                 type="text"
                 id="jour"
                 name="jour"
-                defaultValue={lecturesData.androLitorjika}
+                defaultValue={lecturesData?.androLitorjika || ''}
               />
             </div>
             <div className="form-field">
