@@ -1,7 +1,13 @@
 import './liturgiePdf.css';
 
 export default function LiturgiePdfTemplate({ data }) {
-  console.log(data);
+  const formattedDate = data.date
+    ? new Date(data.date).toLocaleDateString('fr-FR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })
+    : '';
 
   return (
     <div id="pdf-content" className="pdf-container">
@@ -15,7 +21,7 @@ export default function LiturgiePdfTemplate({ data }) {
         </div>
         <div className="right">
           <img src="/logo.png" className="pdf-logo" />
-          <div className="pdf-date">{data.date}</div>
+          <div className="pdf-date">{formattedDatee}</div>
         </div>
       </div>
 
@@ -28,6 +34,12 @@ export default function LiturgiePdfTemplate({ data }) {
       <div className="section">
         <div className="section-title">Fifonana</div>
         <div className="section-content">{data.fifonana}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Voninahitra</div>
+        <div className="section-content">{data.voninahitra}</div>
         <div className="section-page"></div>
       </div>
 
