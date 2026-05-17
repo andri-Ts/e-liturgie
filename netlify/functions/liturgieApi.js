@@ -1,20 +1,17 @@
 const axios = require('axios');
 
-// URL privée stockée dans Netlify
-const BACKEND_URL = process.env.BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL; // http://72.61.166.33:5000
 
 exports.handler = async function (event) {
   try {
-    // récupère le endpoint demandé
+    // 👇 garde tout après /liturgieApi
     const path = event.path.replace('/.netlify/functions/liturgieApi', '');
 
-    // body envoyé depuis React
     const body = JSON.parse(event.body || '{}');
 
-    // appel backend réel
     const response = await axios({
       method: event.httpMethod,
-      url: `${BACKEND_URL}${path}`,
+      url: `${BACKEND_URL}${path}`, // 👈 important
       data: body,
     });
 

@@ -3,10 +3,8 @@ import axios from 'axios';
 const isDev = import.meta.env.MODE === 'development';
 
 const apiRequest = axios.create({
-  // local = backend direct
-  // prod = netlify function
   baseURL: isDev
-    ? import.meta.env.VITE_API_URL
+    ? import.meta.env.VITE_API_URL // ex: http://localhost:5000/api
     : '/.netlify/functions/liturgieApi',
 
   headers: {
