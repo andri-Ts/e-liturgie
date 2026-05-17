@@ -50,6 +50,12 @@ export default function LiturgiePdfTemplate({ data }) {
       </div>
 
       <div className="section">
+        <div className="section-title">Setriny</div>
+        <div className="section-content">{data.setriny}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
         <div className="section-title">Salamo</div>
         <div className="section-content">{data.salamo}</div>
         <div className="section-page"></div>
@@ -86,12 +92,6 @@ export default function LiturgiePdfTemplate({ data }) {
       </div>
 
       <div className="section">
-        <div className="section-title">Rakitra</div>
-        <div className="section-content">{data.rakitra}</div>
-        <div className="section-page"></div>
-      </div>
-
-      <div className="section">
         <div className="section-title">Fanolorana</div>
         <div className="section-content">{data.fanolorana}</div>
         <div className="section-page"></div>
@@ -106,6 +106,30 @@ export default function LiturgiePdfTemplate({ data }) {
       <div className="section">
         <div className="section-title">Anamnese</div>
         <div className="section-content">{data.anamnese}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Rainay</div>
+        <div className="section-content">{data.rainay}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Fiadanana</div>
+        <div className="section-content">{data.fiadanana}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Zanak'ondry</div>
+        <div className="section-content">{data.zanak_ondry}</div>
+        <div className="section-page"></div>
+      </div>
+
+      <div className="section">
+        <div className="section-title">Komonio</div>
+        <div className="section-content">{data.komonio}</div>
         <div className="section-page"></div>
       </div>
 
