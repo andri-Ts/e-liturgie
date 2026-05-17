@@ -1,23 +1,17 @@
 import axios from 'axios';
 
+const isDev = import.meta.env.MODE === 'development';
+
 const apiRequest = axios.create({
-  baseURL: '/.netlify/functions/',
+  // local = backend direct
+  // prod = netlify function
+  baseURL: isDev
+    ? import.meta.env.VITE_API_URL
+    : '/.netlify/functions/liturgieApi',
+
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 export default apiRequest;
-
-// import axios from 'axios';
-
-// const isDev = import.meta.env.MODE === 'development';
-
-// export default axios.create({
-//   baseURL: isDev
-//     ? 'http://72.61.166.33:5000/api'
-//     : '/.netlify/functions/vakitenyApi',
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// });

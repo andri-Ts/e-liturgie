@@ -24,7 +24,7 @@ function LecturePage() {
     e.preventDefault();
 
     try {
-      const response = await apiRequest.post('/vakitenyApi', {
+      const response = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(infosData.date).toISOString(),
       });
       setLecturesData(response.data);
