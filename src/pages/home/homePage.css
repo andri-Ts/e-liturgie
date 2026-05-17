@@ -73,3 +73,23 @@
 
   transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+  .home-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .home-card h1 {
+    font-size: 2rem;
+  }
+
+  .home-card p {
+    font-size: 1rem;
+  }
+
+  .start-btn {
+    width: 100%;
+    height: 48px;
+  }
+}

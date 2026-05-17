@@ -1,5 +1,5 @@
 .liturgie-page {
-  max-width: 62rem;
+  max-width: 60rem;
   margin: 2.5rem auto;
   padding: 1.5rem;
 
@@ -31,17 +31,10 @@
 ========================= */
 
 .infos-liturgie {
-  margin-bottom: 1.5rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3.5rem;
-}
-
-/* container des champs infos */
-.infos-liturgie > div {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
 /* champ */
@@ -127,4 +120,31 @@
 
 .btn-pdf:hover {
   background-color: #111;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  .liturgie-page {
+    padding: 1rem;
+  }
+
+  .infos-liturgie {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .infos-liturgie .item {
+    min-width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions button {
+    width: 100%;
+  }
 }

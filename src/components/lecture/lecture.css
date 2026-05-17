@@ -27,3 +27,28 @@ article p {
   color: #333;
   white-space: pre-line;
 }
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media (max-width: 600px) {
+  article {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  article h2 {
+    font-size: 1rem;
+  }
+
+  article span {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  article p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}

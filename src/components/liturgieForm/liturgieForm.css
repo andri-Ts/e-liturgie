@@ -50,3 +50,38 @@
   border-color: #1e9100;
   box-shadow: 0 0 0 3px rgba(30, 145, 0, 0.12);
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .liturgie-form .item {
+    flex-direction: column; /* label au-dessus de l'input */
+    align-items: stretch; /* prend toute la largeur */
+    gap: 0.3rem;
+  }
+
+  .liturgie-form label {
+    width: 100%; /* enlève la contrainte fixe */
+  }
+
+  .liturgie-form input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .liturgie-form {
+    gap: 0.75rem;
+  }
+
+  .liturgie-form label {
+    font-size: 0.8rem;
+  }
+
+  .liturgie-form input {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.65rem;
+  }
+}

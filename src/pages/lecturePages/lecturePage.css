@@ -138,3 +138,46 @@
     background-color 0.2s ease,
     transform 0.2s ease;
 }
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media (max-width: 600px) {
+  .lecture-page {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+    gap: 1.2rem;
+  }
+
+  .infos,
+  .lectures {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .infos h2,
+  .lectures h2 {
+    font-size: 1rem;
+  }
+
+  /* formulaire en colonne stricte */
+  .fields-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .fields-row > * {
+    min-width: 100%;
+  }
+
+  .fields-row .form-field input {
+    font-size: 16px; /* évite zoom iOS */
+  }
+
+  /* bouton plus large et lisible */
+  .infos button,
+  .lectures button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
