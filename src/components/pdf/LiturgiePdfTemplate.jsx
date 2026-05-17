@@ -21,7 +21,7 @@ export default function LiturgiePdfTemplate({ data }) {
         </div>
         <div className="right">
           <img src="/logo.png" className="pdf-logo" />
-          <div className="pdf-date">{formattedDatee}</div>
+          <div className="pdf-date">{formattedDate}</div>
         </div>
       </div>
 
