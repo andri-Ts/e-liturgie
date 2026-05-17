@@ -5,7 +5,7 @@ export default async function downloadPdf() {
   const input = document.querySelector('.pdf-container');
 
   const canvas = await html2canvas(input, {
-    scale: 4,
+    scale: 3,
     useCORS: true,
     backgroundColor: '#ffffff',
   });
