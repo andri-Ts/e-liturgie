@@ -2,13 +2,13 @@ export default async function handler(req, res) {
   try {
     const path = Array.isArray(req.query.path)
       ? req.query.path.join('/')
-      : req.query.path;
+      : req.query.path || '';
 
     const queryString = new URLSearchParams(req.query);
     queryString.delete('path');
 
     const backendUrl =
-      `http://72.61.166.33:5000/api/${path}` +
+      `${process.env.BACKEND_URL}/api/${path}` +
       (queryString.toString() ? `?${queryString}` : '');
 
     const response = await fetch(backendUrl, {
@@ -23,12 +23,18 @@ export default async function handler(req, res) {
           : undefined,
     });
 
+    const contentType = response.headers.get('content-type');
     const data = await response.text();
 
-    res.status(response.status).send(data);
+    if (contentType?.includes('application/json')) {
+      return res.status(response.status).json(JSON.parse(data));
+    }
+
+    return res.status(response.status).send(data);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
+    console.error('Proxy error:', error);
+
+    return res.status(500).json({
       message: 'Proxy error',
       error: error.message,
     });
