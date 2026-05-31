@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     queryString.delete('path');
 
     const backendUrl =
-      `${process.env.BACKEND_URL}/api/${path}` +
+      `${process.env.BACKEND_URL}/${path}` +
       (queryString.toString() ? `?${queryString}` : '');
 
     const response = await fetch(backendUrl, {
