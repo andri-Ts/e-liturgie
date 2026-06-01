@@ -24,7 +24,7 @@ function LecturePage() {
     e.preventDefault();
 
     try {
-      apiRequest.post('/proxy', {
+      const response = await apiRequest.post('/proxy', {
         path: 'Sorona/Vakiteny',
         date: new Date(infosData.date).toISOString(),
       });
