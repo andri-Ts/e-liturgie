@@ -4,13 +4,13 @@ export default async function handler(req, res) {
       ? req.query.path.join('/')
       : req.query.path || '';
 
-    const queryString = new URLSearchParams(req.query);
-    queryString.delete('path');
+    const backendUrl = `${process.env.BACKEND_URL}/${path}`;
 
-    const backendUrl =
-      `${process.env.BACKEND_URL}/${path}` +
-      (queryString.toString() ? `?${queryString}` : '');
+    console.log('BACKEND_URL =', process.env.BACKEND_URL);
+    console.log('PATH =', path);
+    console.log('FINAL URL =', backendUrl);
 
+    // ...
     const response = await fetch(backendUrl, {
       method: req.method,
       headers: {
