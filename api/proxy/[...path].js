@@ -1,40 +1,56 @@
 export default async function handler(req, res) {
   try {
-    const path = Array.isArray(req.query.path)
-      ? req.query.path.join('/')
-      : req.query.path || '';
+    // ✅ IMPORTANT :
+    // Sur Vercel catch-all [...path],
+    // req.query.path peut être :
+    // 1) ["Sorona", "Vakiteny"] (cas le plus fréquent)
+    // 2) "Sorona/Vakiteny" (parfois selon config)
+    // 3) undefined
 
+    const pathArray = req.query.path || [];
+
+    // ✅ On normalise TOUJOURS en string propre
+    const path = Array.isArray(pathArray)
+      ? pathArray.join('/') // ["Sorona","Vakiteny"] → "Sorona/Vakiteny"
+      : pathArray; // déjà string → on garde
+
+    // ✅ DEBUG (très utile sur Vercel logs)
+    console.log('PATH ARRAY:', pathArray);
+    console.log('FINAL PATH:', path);
+
+    // ✅ On construit l'URL backend proprement
     const backendUrl = `${process.env.BACKEND_URL}/${path}`;
 
-    console.log('BACKEND_URL =', process.env.BACKEND_URL);
-    console.log('PATH =', path);
-    console.log('FINAL URL =', backendUrl);
+    console.log('BACKEND URL:', backendUrl);
 
-    // ...
+    // ✅ Appel backend identique
     const response = await fetch(backendUrl, {
       method: req.method,
+
       headers: {
         'Content-Type': 'application/json',
+
+        // ⚠️ important : on forward auth si existant
         Authorization: req.headers.authorization || '',
       },
+
+      // ✅ seulement si POST/PUT/etc
       body:
         req.method !== 'GET' && req.method !== 'HEAD'
           ? JSON.stringify(req.body)
           : undefined,
     });
 
-    const contentType = response.headers.get('content-type');
+    // ✅ réponse brute backend
     const data = await response.text();
 
-    if (contentType?.includes('application/json')) {
-      return res.status(response.status).json(JSON.parse(data));
-    }
-
-    return res.status(response.status).send(data);
+    // ✅ retour direct (plus safe que JSON.parse conditionnel)
+    res.status(response.status).send(data);
   } catch (error) {
+    // ❌ si erreur réseau ou fetch backend
     console.error('Proxy error:', error);
 
-    return res.status(500).json({
+    res.status(500).json({
       message: 'Proxy error',
       error: error.message,
     });
