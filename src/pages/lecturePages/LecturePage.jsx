@@ -5,19 +5,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import apiRequest from '../../libs/apiRequest';
 import InfosForm from '../../components/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
+import { useLiturgie } from '../../context/LiturgieContext';
 
 function LecturePage() {
   // infos globales formulaire
-  const [infosData, setInfosData] = useState({
-    date: '',
-    jour: '',
-    entite: '',
-  });
-  const [lecturesData, setLecturesData] = useState(null); // infos sur les lectures
+  const { infosLiturgie, setInfosLiturgie, lecturesDuJour, setLecturesDuJour } =
+    useLiturgie();
   const nav = useNavigate();
 
   // formatage des données api lectures en tab
-  const formattedLectures = buildLectures(lecturesData);
+  const formattedLectures = buildLectures(lecturesDuJour);
 
   // submit formulaire
   const handleSubmit = async (e) => {
@@ -25,12 +22,12 @@ function LecturePage() {
 
     try {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
-        date: new Date(infosData.date).toISOString(),
+        date: new Date(infosLiturgie.date).toISOString(),
       });
-      setLecturesData(response.data);
+      setLecturesDuJour(response.data);
 
       // remplir automatiquement le jour liturgique
-      setInfosData((prev) => ({
+      setInfosLiturgie((prev) => ({
         ...prev,
         jour: response.data.androLitorjika || '',
       }));
@@ -41,22 +38,17 @@ function LecturePage() {
 
   // pour envoyer les data du formulaire vers la page suivante
   const handleNext = () => {
-    nav('/liturgie', {
-      state: {
-        infos: infosData,
-        lecturesData,
-      },
-    });
+    nav('/liturgie');
   };
 
   return (
     <section className="lecture-page">
       <InfosForm
-        infosData={infosData}
-        setInfosData={setInfosData}
+        infosData={infosLiturgie}
+        setInfosData={setInfosLiturgie}
         onSubmit={handleSubmit}
       />
-      {lecturesData && (
+      {lecturesDuJour && (
         <div className="lectures">
           <h2>Fanomanana ny vakiteny</h2>
           {formattedLectures.map((lecture, index) => (

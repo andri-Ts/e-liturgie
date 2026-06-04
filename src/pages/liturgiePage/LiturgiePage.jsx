@@ -4,25 +4,27 @@ import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
 import './liturgiePage.css';
 import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
+import { useLiturgie } from '../../context/LiturgieContext';
 
 function LiturgiePage() {
-  const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
-  const { infos, lecturesData } = location.state || {};
+  // const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
+  // const { infos, lecturesData } = location.state || {};
   // console.log(location.state);
+  const { infosLiturgie, lecturesDuJour } = useLiturgie();
   const [liturgieData, setLiturgieData] = useState({
-    date: infos.date || '',
-    jour: infos.jour || '',
-    entite: infos.entite || '',
+    date: infosLiturgie.date || '',
+    jour: infosLiturgie.jour || '',
+    entite: infosLiturgie.entite || '',
     fidirana: '',
     fifonana: '',
     voninahitra: '',
-    boky1: lecturesData?.andininy1 || '',
+    boky1: lecturesDuJour?.andininy1 || '',
     setriny: '',
-    salamo: lecturesData?.setriny || '',
-    boky2: lecturesData?.andininy2 || '',
+    salamo: lecturesDuJour?.setriny || '',
+    boky2: lecturesDuJour?.andininy2 || '',
     aleloia: '',
     fihobiana: '',
-    boky3: lecturesData?.andininy3 || '',
+    boky3: lecturesDuJour?.andininy3 || '',
     credo: 'Tononina' || '',
     ranombavaka: '',
     rakitra: '',
