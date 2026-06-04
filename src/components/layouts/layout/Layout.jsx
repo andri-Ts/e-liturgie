@@ -3,7 +3,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import './layout.css';
 import Sidebar from '../sidebar/Sidebar';
-import Header from '../header/Header';
+import Header from '../header/HeaderBar';
 
 function Layout() {
   return (
