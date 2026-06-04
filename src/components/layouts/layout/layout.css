@@ -1,4 +1,4 @@
-.layout {
+/* .layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -6,10 +6,22 @@
 
 .layout > main {
   flex: 1;
-  /* background-color: antiquewhite; */
 
   max-width: 1280px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+} */
+
+.layout {
+  display: flex;
+
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
 }

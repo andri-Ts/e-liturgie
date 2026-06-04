@@ -1,9 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Header from './layouts/header/Header';
-import Layout from './layouts/layout/Layout';
 import LecturePage from './pages/lecturePages/LecturePage';
 import LiturgiePage from './pages/liturgiePage/LiturgiePage';
 import HomePage from './pages/home/HomePage';
+import Layout from './components/layouts/layout/Layout';
 
 function App() {
   const fkmpRouter = createBrowserRouter([
