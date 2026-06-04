@@ -21,21 +21,9 @@ function InfosForm({ infosData, setInfosData, onSubmit }) {
               type="date"
               id="date"
               name="date"
-              value={infosData.date}
+              value={infosData.dateMesse}
               onChange={handleChange}
               required
-            />
-          </div>
-
-          <div className="form-field">
-            <label htmlFor="jour">Andro litorjika</label>
-
-            <input
-              type="text"
-              id="jour"
-              name="jour"
-              value={infosData.jour}
-              onChange={handleChange}
             />
           </div>
 
@@ -47,6 +35,18 @@ function InfosForm({ infosData, setInfosData, onSubmit }) {
               id="entite"
               name="entite"
               value={infosData.entite}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="jour">Andro litorjika</label>
+
+            <input
+              type="text"
+              id="jour"
+              name="jour"
+              value={infosData.jourLiturgique}
               onChange={handleChange}
             />
           </div>

@@ -22,14 +22,15 @@ function LecturePage() {
 
     try {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
-        date: new Date(infosLiturgie.date).toISOString(),
+        date: new Date(infosLiturgie.dateMesse).toISOString(),
       });
+      // stockage global des lectures
       setLecturesDuJour(response.data);
 
       // remplir automatiquement le jour liturgique
       setInfosLiturgie((prev) => ({
         ...prev,
-        jour: response.data.androLitorjika || '',
+        jourLiturgique: response.data.androLitorjika || '',
       }));
     } catch (error) {
       console.log(error);
