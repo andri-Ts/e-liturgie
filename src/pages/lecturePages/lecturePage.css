@@ -1,7 +1,7 @@
 .lecture-page {
   max-width: 62rem;
   margin: 2.5rem auto;
-  padding: 0 1rem;
+  /* padding: 0 0.2rem; */
 
   display: flex;
   flex-direction: column;
