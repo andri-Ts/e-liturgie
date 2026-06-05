@@ -118,15 +118,6 @@ function LiturgiePage() {
             </div>
           </div>
 
-          {/* <LiturgieForm
-            liturgieData={liturgieData}
-            setLiturgieData={setLiturgieData}
-          /> */}
-
-          {/* {elements.map((element) => (
-            <div key={element.id}>{element.label}</div>
-          ))} */}
-
           {/* Rendu des elements  */}
           {elements.map((element) => (
             <ElementRender key={element.id} element={element} />
