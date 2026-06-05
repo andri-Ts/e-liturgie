@@ -11,7 +11,7 @@ function LiturgiePage() {
   // const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
   // const { infos, lecturesData } = location.state || {};
   // console.log(location.state);
-  const { infosLiturgie, lecturesDuJour, elements } = useLiturgie();
+  const { infosLiturgie, lecturesDuJour, elements, addElement } = useLiturgie();
   const [liturgieData, setLiturgieData] = useState({
     date: infosLiturgie.dateMesse || '',
     jour: infosLiturgie.jourLiturgique || '',
@@ -45,6 +45,19 @@ function LiturgiePage() {
   const handleValidate = () => {
     downloadPdf();
     setIsValidate(false);
+  };
+
+  // Fonction pour créer un chant
+  const handleAddChant = () => {
+    addElement({
+      id: crypto.randomUUID,
+      type: 'chant',
+      label: 'Hira vaovao',
+      data: {
+        titre: '',
+        page: '',
+      },
+    });
   };
 
   const handleChange = (e) => {
@@ -122,6 +135,9 @@ function LiturgiePage() {
 
         {/* ACTIONS */}
         <div className="actions">
+          <button onClick={handleAddChant} type="button">
+            + Hira
+          </button>
           <button type="submit">Valider</button>
 
           {isValidate && (
