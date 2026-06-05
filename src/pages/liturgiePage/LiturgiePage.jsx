@@ -12,8 +12,8 @@ function LiturgiePage() {
   // console.log(location.state);
   const { infosLiturgie, lecturesDuJour } = useLiturgie();
   const [liturgieData, setLiturgieData] = useState({
-    date: infosLiturgie.date || '',
-    jour: infosLiturgie.jour || '',
+    date: infosLiturgie.dateMesse || '',
+    jour: infosLiturgie.jourLiturgique || '',
     entite: infosLiturgie.entite || '',
     fidirana: '',
     fifonana: '',

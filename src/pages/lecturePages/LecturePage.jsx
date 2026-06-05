@@ -24,6 +24,7 @@ function LecturePage() {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(infosLiturgie.dateMesse).toISOString(),
       });
+      console.log(response.data);
       // stockage global des lectures
       setLecturesDuJour(response.data);
 
@@ -45,10 +46,11 @@ function LecturePage() {
   return (
     <section className="lecture-page">
       <InfosForm
-        infosData={infosLiturgie}
-        setInfosData={setInfosLiturgie}
+        infosLiturgie={infosLiturgie}
+        setInfosLiturgie={setInfosLiturgie}
         onSubmit={handleSubmit}
       />
+
       {lecturesDuJour && (
         <div className="lectures">
           <h2>Fanomanana ny vakiteny</h2>

@@ -1,8 +1,8 @@
-function InfosForm({ infosData, setInfosData, onSubmit }) {
+function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setInfosData((prev) => ({
+    setInfosLiturgie((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -20,8 +20,8 @@ function InfosForm({ infosData, setInfosData, onSubmit }) {
             <input
               type="date"
               id="date"
-              name="date"
-              value={infosData.dateMesse}
+              name="dateMesse"
+              value={infosLiturgie.dateMesse}
               onChange={handleChange}
               required
             />
@@ -34,7 +34,7 @@ function InfosForm({ infosData, setInfosData, onSubmit }) {
               type="text"
               id="entite"
               name="entite"
-              value={infosData.entite}
+              value={infosLiturgie.entite}
               onChange={handleChange}
             />
           </div>
@@ -45,8 +45,8 @@ function InfosForm({ infosData, setInfosData, onSubmit }) {
             <input
               type="text"
               id="jour"
-              name="jour"
-              value={infosData.jourLiturgique}
+              name="jourLiturgique"
+              value={infosLiturgie.jourLiturgique}
               onChange={handleChange}
             />
           </div>
