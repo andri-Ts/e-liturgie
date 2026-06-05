@@ -8,49 +8,19 @@ import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/ElementRender';
 
 function LiturgiePage() {
-  // const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
-  // const { infos, lecturesData } = location.state || {};
-  // console.log(location.state);
-  const { infosLiturgie, lecturesDuJour, elements, addElement } = useLiturgie();
-  const [liturgieData, setLiturgieData] = useState({
-    date: infosLiturgie.dateMesse || '',
-    jour: infosLiturgie.jourLiturgique || '',
-    entite: infosLiturgie.entite || '',
-    fidirana: '',
-    fifonana: '',
-    voninahitra: '',
-    boky1: lecturesDuJour?.andininy1 || '',
-    setriny: '',
-    salamo: lecturesDuJour?.setriny || '',
-    boky2: lecturesDuJour?.andininy2 || '',
-    aleloia: '',
-    fihobiana: '',
-    boky3: lecturesDuJour?.andininy3 || '',
-    credo: 'Tononina' || '',
-    ranombavaka: '',
-    rakitra: '',
-    fanolorana: '',
-    masina: '',
-    anamnese: '',
-    rainay: '',
-    fiadanana: '',
-    zanak_ondry: '',
-    komonio: '',
-    fisaorana: '',
-    fanirahana: '',
-  });
-  const [isValidate, setIsValidate] = useState(false);
-
-  // appel la fonction pdf
-  const handleValidate = () => {
-    downloadPdf();
-    setIsValidate(false);
-  };
+  const {
+    infosLiturgie,
+    setInfosLiturgie,
+    lecturesDuJour,
+    elements,
+    addElement,
+  } = useLiturgie(); // Context global
+  const [isValidate, setIsValidate] = useState(false); // validation pdf
 
   // Fonction pour créer un chant
   const handleAddChant = () => {
     addElement({
-      id: crypto.randomUUID,
+      id: crypto.randomUUID(),
       type: 'chant',
       label: 'Hira vaovao',
       data: {
@@ -60,14 +30,28 @@ function LiturgiePage() {
     });
   };
 
-  const handleChange = (e) => {
+  // -----------------------------
+  // MODIFICATION INFOS (header)
+  // -----------------------------
+  const handleChangeInfos = (e) => {
     const { name, value } = e.target;
-    setLiturgieData((prev) => ({
+    setInfosLiturgie((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
+  // -----------------------------
+  // PDF
+  // -----------------------------
+  const handleValidate = () => {
+    downloadPdf();
+    setIsValidate(false);
+  };
+
+  // -----------------------------
+  // SUBMIT FORM
+  // -----------------------------
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(liturgieData);
@@ -77,54 +61,55 @@ function LiturgiePage() {
   return (
     <section className="liturgie-page">
       <h2>Fanomamanana ny hira</h2>
+
       <form onSubmit={handleSubmit}>
-        {/* PDF */}
-        <div id="pdf-content">
-          <div className="infos-liturgie">
-            <div className="item">
-              <label htmlFor="date">Daty</label>
-
-              <input
-                type="date"
-                id="date"
-                name="date"
-                onChange={handleChange}
-                value={liturgieData.date}
-                readOnly
-              />
-            </div>
-            <div className="item">
-              <label htmlFor="jour">Andro</label>
-
-              <input
-                type="text"
-                id="jour"
-                name="jour"
-                onChange={handleChange}
-                value={liturgieData.jour}
-                readOnly
-              />
-            </div>
-            <div className="item">
-              <label htmlFor="entite">Vondrona</label>
-
-              <input
-                type="text"
-                id="entite"
-                name="entite"
-                onChange={handleChange}
-                value={liturgieData.entite}
-              />
-            </div>
+        {/* ===================== */}
+        {/* 🔵 INFOS LITURGIQUES */}
+        {/* ===================== */}{' '}
+        <div className="infos-liturgie">
+          <div className="item">
+            <label htmlFor="date">Daty</label>
+            <input
+              type="date"
+              id="date"
+              name="dateMesse"
+              // onChange={handleChange}
+              value={infosLiturgie.dateMesse}
+              readOnly
+            />
           </div>
+          <div className="item">
+            <label htmlFor="jour">Andro</label>
+            <input
+              type="text"
+              id="jour"
+              name="jourLiturgique"
+              onChange={handleChangeInfos}
+              value={infosLiturgie.jourLiturgique}
+              // readOnly
+            />
+          </div>
+          <div className="item">
+            <label htmlFor="entite">Vondrona</label>
 
-          {/* Rendu des elements  */}
-          {elements.map((element) => (
-            <ElementRender key={element.id} element={element} />
-          ))}
+            <input
+              type="text"
+              id="entite"
+              name="entite"
+              onChange={handleChangeInfos}
+              value={infosLiturgie.entite}
+            />
+          </div>
         </div>
-
-        {/* ACTIONS */}
+        {/* ===================== */}
+        {/*  ELEMENTS LITURGIE */}
+        {/* ===================== */}
+        {elements.map((element) => (
+          <ElementRender key={element.id} element={element} />
+        ))}
+        {/* ===================== */}
+        {/* 🔵 ACTIONS */}
+        {/* ===================== */}
         <div className="actions">
           <button onClick={handleAddChant} type="button">
             + Hira
@@ -137,8 +122,9 @@ function LiturgiePage() {
             </button>
           )}
         </div>
-
-        {/* 👇 PDF RENDER (HIDDEN POUR EXPORT UNIQUEMENT) */}
+        {/* ===================== */}
+        {/* PDF HIDDEN */}
+        {/* ===================== */}
         {isValidate && (
           <div
             style={{
@@ -147,7 +133,7 @@ function LiturgiePage() {
               top: 0,
             }}
           >
-            <LiturgiePdfTemplate data={liturgieData} />
+            <LiturgiePdfTemplate infos={infosLiturgie} elements={elements} />
           </div>
         )}
       </form>
