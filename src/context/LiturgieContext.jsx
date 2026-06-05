@@ -26,8 +26,15 @@ export function LiturgieContextProvider({ children }) {
   };
 
   const updateElement = (id, data) => {
+    // prev = ancien tableau elements[]
     setElements((prev) =>
-      prev.map((e) => (e.id === id ? { ...e, ...data } : e)),
+      // on parcourt tous les éléments
+      prev.map(
+        (e) =>
+          e.id === id // si c'est l'élément qu'on veut modifier
+            ? { ...e, ...data } // on crée un nouvel objet : // - on garde toutes les anciennes propriétés de e, // - on écrase avec les nouvelles données (data)
+            : e, // sinon on laisse l'élément inchangé
+      ),
     );
   };
 

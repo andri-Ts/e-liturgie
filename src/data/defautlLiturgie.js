@@ -1,10 +1,11 @@
-const defaultElements = [
+export const defaultElements = [
   {
     id: crypto.randomUUID(),
     type: 'chant',
     label: 'Fidirana',
     data: {
       titre: '',
+      page: '',
     },
   },
 
@@ -14,6 +15,7 @@ const defaultElements = [
     label: 'Fifonana',
     data: {
       titre: '',
+      page: '',
     },
   },
 
@@ -23,33 +25,7 @@ const defaultElements = [
     label: 'Voninahitra',
     data: {
       titre: '',
-    },
-  },
-
-  {
-    id: crypto.randomUUID(),
-    type: 'lecture',
-    label: 'Vakiteny 1',
-    data: {
-      reference: response.data.andininy1,
-    },
-  },
-
-  {
-    id: crypto.randomUUID(),
-    type: 'psaume',
-    label: 'Salamo',
-    data: {
-      reference: response.data.setriny,
-    },
-  },
-
-  {
-    id: crypto.randomUUID(),
-    type: 'lecture',
-    label: 'Vakiteny 2',
-    data: {
-      reference: response.data.andininy2,
+      page: '',
     },
   },
 
@@ -64,10 +40,10 @@ const defaultElements = [
 
   {
     id: crypto.randomUUID(),
-    type: 'lecture',
-    label: 'Evanjely',
+    type: 'chant',
+    label: 'Fiekem-pinoana',
     data: {
-      reference: response.data.andininy3,
+      titre: 'Tononina',
     },
   },
 
@@ -86,6 +62,7 @@ const defaultElements = [
     label: 'Rakitra',
     data: {
       titre: '',
+      page: '',
     },
   },
 
@@ -95,6 +72,7 @@ const defaultElements = [
     label: 'Fanolorana',
     data: {
       titre: '',
+      page: '',
     },
   },
 
@@ -110,7 +88,7 @@ const defaultElements = [
   {
     id: crypto.randomUUID(),
     type: 'chant',
-    label: 'Anamnèse',
+    label: 'Anamnese',
     data: {
       titre: '',
     },
@@ -149,6 +127,7 @@ const defaultElements = [
     label: 'Komonio',
     data: {
       titre: '',
+      page: '',
     },
   },
 
@@ -158,6 +137,7 @@ const defaultElements = [
     label: 'Fisaorana',
     data: {
       titre: '',
+      page: '',
     },
   },
 
@@ -167,6 +147,7 @@ const defaultElements = [
     label: 'Fanirahana',
     data: {
       titre: '',
+      page: '',
     },
   },
 ];

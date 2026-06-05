@@ -6,6 +6,7 @@ import apiRequest from '../../libs/apiRequest';
 import InfosForm from '../../components/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
 import { useLiturgie } from '../../context/LiturgieContext';
+import { defaultElements } from '../../data/defautlLiturgie';
 
 function LecturePage() {
   // infos globales formulaire
@@ -69,8 +70,22 @@ function LecturePage() {
         },
       ];
 
-      // Stockage des lectures du api dans le context
-      setElements(lecturesElements);
+      // Stockage des données liturgique du api dans le context
+      setElements([
+        defaultElements[0],
+        defaultElements[1],
+        defaultElements[2],
+
+        lecturesElements[0],
+        lecturesElements[1],
+        lecturesElements[2],
+
+        defaultElements[3],
+
+        lecturesElements[3],
+
+        ...defaultElements.slice(4), // prends tous les index à partir de 4
+      ]);
 
       // remplir automatiquement le jour liturgique
       setInfosLiturgie((prev) => ({
