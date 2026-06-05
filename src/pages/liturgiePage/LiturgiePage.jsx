@@ -5,6 +5,7 @@ import './liturgiePage.css';
 import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
+import ElementRender from '../../components/liturgie/ElementRender';
 
 function LiturgiePage() {
   // const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
@@ -109,8 +110,13 @@ function LiturgiePage() {
             setLiturgieData={setLiturgieData}
           /> */}
 
-          {elements.map((element) => (
+          {/* {elements.map((element) => (
             <div key={element.id}>{element.label}</div>
+          ))} */}
+
+          {/* Rendu des elements  */}
+          {elements.map((element) => (
+            <ElementRender key={element.id} element={element} />
           ))}
         </div>
 
