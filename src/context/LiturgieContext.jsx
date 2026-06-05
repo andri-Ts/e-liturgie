@@ -42,6 +42,7 @@ export function LiturgieContextProvider({ children }) {
         setLecturesDuJour,
 
         elements,
+        setElements,
         addElement,
         removeElement,
         updateElement,

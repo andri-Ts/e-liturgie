@@ -10,7 +10,7 @@ function LiturgiePage() {
   // const location = useLocation(); // permet de récupérer les données envoyés via useNavigate
   // const { infos, lecturesData } = location.state || {};
   // console.log(location.state);
-  const { infosLiturgie, lecturesDuJour } = useLiturgie();
+  const { infosLiturgie, lecturesDuJour, elements } = useLiturgie();
   const [liturgieData, setLiturgieData] = useState({
     date: infosLiturgie.dateMesse || '',
     jour: infosLiturgie.jourLiturgique || '',
@@ -104,10 +104,14 @@ function LiturgiePage() {
             </div>
           </div>
 
-          <LiturgieForm
+          {/* <LiturgieForm
             liturgieData={liturgieData}
             setLiturgieData={setLiturgieData}
-          />
+          /> */}
+
+          {elements.map((element) => (
+            <div key={element.id}>{element.label}</div>
+          ))}
         </div>
 
         {/* ACTIONS */}

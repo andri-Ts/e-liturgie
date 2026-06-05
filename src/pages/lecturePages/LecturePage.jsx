@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './lecturePage.css';
 import Lecture from '../../components/lecture/Lecture';
-import { Link, useNavigate } from 'react-router-dom';
+import { data, Link, useNavigate } from 'react-router-dom';
 import apiRequest from '../../libs/apiRequest';
 import InfosForm from '../../components/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
@@ -9,8 +9,13 @@ import { useLiturgie } from '../../context/LiturgieContext';
 
 function LecturePage() {
   // infos globales formulaire
-  const { infosLiturgie, setInfosLiturgie, lecturesDuJour, setLecturesDuJour } =
-    useLiturgie();
+  const {
+    infosLiturgie,
+    setInfosLiturgie,
+    lecturesDuJour,
+    setLecturesDuJour,
+    setElements,
+  } = useLiturgie();
   const nav = useNavigate();
 
   // formatage des données api lectures en tab
@@ -24,9 +29,48 @@ function LecturePage() {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(infosLiturgie.dateMesse).toISOString(),
       });
-      console.log(response.data);
+      // console.log(response.data);
       // stockage global des lectures
       setLecturesDuJour(response.data);
+
+      // Récup des lectures du api
+      const lecturesElements = [
+        {
+          id: crypto.randomUUID(),
+          type: 'lecture',
+          label: 'Vakiteny 1',
+          data: {
+            reference: response.data.andininy1,
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          type: 'psaume',
+          label: 'Salamo',
+          data: {
+            reference: response.data.setriny,
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          type: 'lecture',
+          label: 'Vakiteny 2',
+          data: {
+            reference: response.data.andininy2,
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          type: 'lecture',
+          label: 'Evanjely',
+          data: {
+            reference: response.data.andininy3,
+          },
+        },
+      ];
+
+      // Stockage des lectures du api dans le context
+      setElements(lecturesElements);
 
       // remplir automatiquement le jour liturgique
       setInfosLiturgie((prev) => ({
