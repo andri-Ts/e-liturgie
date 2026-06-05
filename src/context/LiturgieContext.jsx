@@ -1,20 +1,45 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export const LiturgieContext = createContext(); // creation du context qu'on va propager
 
 export function LiturgieContextProvider({ children }) {
-  // Variables infos globals sur la liturgie
-  const [infosLiturgie, setInfosLiturgie] = useState({
-    dateMesse: '',
-    jourLiturgique: '',
-    entite: '',
-  });
+  // =====================================
+  // CHARGEMENT depuis localStorage
+  // =====================================
+  const savedLocalStorage = JSON.parse(localStorage.getItem('liturgie'));
 
-  // Variable des réferences de lectures
-  const [lecturesDuJour, setLecturesDuJour] = useState(null);
+  // =====================================
+  // Variable INFOS LITURGIES
+  // =====================================
+  const [infosLiturgie, setInfosLiturgie] = useState(
+    savedLocalStorage?.infosLiturgie || {
+      dateMesse: '',
+      jourLiturgique: '',
+      entite: '',
+    },
+  );
 
-  // Variables types d'élements
-  const [elements, setElements] = useState([]);
+  // =====================================
+  // Variable LECTURES API
+  // =====================================
+  const [lecturesDuJour, setLecturesDuJour] = useState(
+    savedLocalStorage?.lecturesDuJour || null,
+  );
+
+  // =====================================
+  // Variable ELEMENTS DE LA LITURGIE
+  // =====================================
+  const [elements, setElements] = useState(savedLocalStorage?.elements || []);
+
+  // =====================================
+  // SAUVEGARDE AUTOMATIQUE
+  // =====================================
+  useEffect(() => {
+    localStorage.setItem(
+      'liturgie',
+      JSON.stringify({ infosLiturgie, lecturesDuJour, elements }),
+    );
+  }, [infosLiturgie, lecturesDuJour, elements]);
 
   // FONCTIONS pour les éléments
   const addElement = (element) => {
