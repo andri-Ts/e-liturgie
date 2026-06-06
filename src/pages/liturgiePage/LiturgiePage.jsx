@@ -133,7 +133,10 @@ function LiturgiePage() {
               top: 0,
             }}
           >
-            <LiturgiePdfTemplate infos={infosLiturgie} elements={elements} />
+            <LiturgiePdfTemplate
+              infosLiturgie={infosLiturgie}
+              elements={elements}
+            />
           </div>
         )}
       </form>
