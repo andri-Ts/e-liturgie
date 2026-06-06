@@ -1,12 +1,22 @@
 .lecture-page {
   max-width: 62rem;
   margin: 2.5rem auto;
-  /* padding: 0 0.2rem; */
+  /* padding: 0 0.2rem;*/
 
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
+
+/* .lecture-page {
+  padding: 2rem;
+
+  max-width: 1200px;
+
+  width: 100%;
+
+  margin: 0 auto;
+} */
 
 /* =========================
    Blocs principaux

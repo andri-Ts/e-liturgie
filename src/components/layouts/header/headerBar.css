@@ -1,13 +1,15 @@
 .page-header {
   height: 70px;
 
+  background: white;
+
+  border-bottom: 1px solid var(--color-border);
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   padding: 0 2rem;
-
-  background: white;
-
-  border-bottom: 1px solid #e5e7eb;
 }
