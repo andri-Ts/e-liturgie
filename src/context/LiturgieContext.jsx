@@ -11,11 +11,13 @@ export function LiturgieContextProvider({ children }) {
   // =====================================
   // Variable INFOS LITURGIES
   // =====================================
-  const [infosLiturgie, setInfosLiturgie] = useState({
-    dateMesse: '',
-    jourLiturgique: '',
-    entite: '',
-  });
+  const [infosLiturgie, setInfosLiturgie] = useState(
+    savedLocalStorage?.infosLiturgie || {
+      dateMesse: '',
+      jourLiturgique: '',
+      entite: '',
+    },
+  );
 
   // =====================================
   // Variable LECTURES API
@@ -25,7 +27,7 @@ export function LiturgieContextProvider({ children }) {
   // =====================================
   // Variable ELEMENTS DE LA LITURGIE
   // =====================================
-  const [elements, setElements] = useState([]);
+  const [elements, setElements] = useState(savedLocalStorage?.elements || []);
 
   // =====================================
   // SAUVEGARDE AUTOMATIQUE
