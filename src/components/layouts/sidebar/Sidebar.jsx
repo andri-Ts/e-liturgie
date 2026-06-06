@@ -5,15 +5,17 @@ import './sidebar.css';
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <div className="sidebar-logo">
-        <h2>FKMP</h2>
+      {/* HEADER BRAND */}
+      <div className="sidebar-brand">
+        <img src="/logo.png" alt="FKMP logo" />
+        <span className="brand-text">FKMP</span>
       </div>
+
       <nav className="sidebar-nav">
-        <NavLink to={'/'}>Accueil</NavLink>
-        <NavLink to={'/vakiteny'}>Fanomanana litorjia</NavLink>
-        <NavLink to={'/lisitra'}>Lisitra litorjia</NavLink>
+        <NavLink to="/">Accueil</NavLink>
+        <NavLink to="/lecture">Lectures</NavLink>
+        <NavLink to="/liturgie">Liturgie</NavLink>
       </nav>
-      <div className="sidebar-footer">Paramètres</div>
     </aside>
   );
 }
