@@ -1,0 +1,102 @@
+.element-card {
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-lg);
+
+  padding: var(--space-sm);
+
+  display: grid;
+
+  grid-template-columns: 0.25fr 2fr 0.25fr; /* LABEL | TITRE | PAGE */
+
+  align-items: center;
+
+  gap: var(--space-md);
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition);
+}
+
+.element-label {
+  font-weight: 600;
+
+  color: var(--color-text);
+
+  font-size: 0.9rem;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.element-input {
+  flex: 2;
+}
+
+.element-input input {
+  width: 100%;
+}
+
+.element-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.element-header {
+  font-weight: 700;
+
+  color: var(--color-text);
+
+  font-size: 1rem;
+
+  margin-bottom: var(--space-xs);
+}
+
+.element-body {
+  display: flex;
+
+  /* flex-direction: column; */
+
+  gap: var(--space-sm);
+}
+
+.element-card input {
+  padding: 0.6rem 0.8rem;
+
+  border-radius: var(--radius-md);
+
+  border: 1px solid var(--color-border);
+
+  background: var(--color-bg);
+
+  font-size: 0.95rem;
+
+  column-gap: var(--space-sm);
+
+  row-gap: 0;
+}
+
+.page-hasina {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+.page-hasina input {
+  width: 80px; /* évite qu’il prenne toute la colonne */
+
+  text-align: center;
+}
+
+.element-card input:focus {
+  border-color: var(--color-primary);
+
+  outline: none;
+
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+}

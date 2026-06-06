@@ -1,45 +1,50 @@
 import React from 'react';
+import '../elementRender/elementGlobal.css';
 
 function ChantForm({ element, updateElement }) {
-  // Récupère le titre du chant
   const handleChangeTitre = (e) => {
-    const newValue = e.target.value; // valeur tapée dans l'input
     updateElement(element.id, {
-      // on modifie uniquement "data"
       data: {
-        ...element.data, // on garde les anciennes valeurs de data (page, etc)
-        titre: newValue,
+        ...element.data,
+        titre: e.target.value,
       },
     });
   };
 
-  // Récupère la page du chant
   const handleChangePage = (e) => {
-    const newValue = e.target.value;
     updateElement(element.id, {
       data: {
         ...element.data,
-        page: newValue,
+        page: e.target.value,
       },
     });
   };
 
   return (
-    <div className="item">
-      <label htmlFor="">{element.label}</label>
-      <input
-        type="text"
-        value={element.data.titre}
-        onChange={handleChangeTitre}
-      />
-      {element.data.page !== undefined && (
+    <div className="element-card">
+      <div className="element-label">{element.label}</div>
+
+      <div className="element-input">
         <input
-          type="number"
-          placeholder="150"
-          value={element.data.page}
-          onChange={handleChangePage}
+          type="text"
+          value={element.data.titre}
+          onChange={handleChangeTitre}
         />
-      )}
+      </div>
+
+      {/* PAGE TOUJOURS PRESENTE */}
+      <div className="element-input page-hasina">
+        {element.data.page !== undefined ? (
+          <input
+            type="number"
+            value={element.data.page}
+            onChange={handleChangePage}
+            placeholder="Page"
+          />
+        ) : (
+          <span style={{ opacity: 0.3 }}>—</span>
+        )}
+      </div>
     </div>
   );
 }

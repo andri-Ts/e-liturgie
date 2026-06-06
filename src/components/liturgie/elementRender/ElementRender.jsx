@@ -1,7 +1,7 @@
 import React from 'react';
-import LectureForm from './lectureForm/LectureForm';
-import ChantForm from './chantForm/ChantForm';
-import { useLiturgie } from '../../context/LiturgieContext';
+import LectureForm from '../lectureForm/LectureForm';
+import ChantForm from '../chantForm/ChantForm';
+import { useLiturgie } from '../../../context/LiturgieContext';
 
 function ElementRender({ element }) {
   const { updateElement } = useLiturgie(); // pour ecrire dans le formuliare du chant

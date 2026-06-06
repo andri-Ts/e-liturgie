@@ -5,7 +5,7 @@ import './liturgiePage.css';
 import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
-import ElementRender from '../../components/liturgie/ElementRender';
+import ElementRender from '../../components/liturgie/elementRender/ElementRender';
 
 function LiturgiePage() {
   const {
