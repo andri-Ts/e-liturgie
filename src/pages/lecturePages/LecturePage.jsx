@@ -6,7 +6,9 @@ import apiRequest from '../../services/apiRequest';
 import InfosForm from '../../components/liturgie/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
 import { useLiturgie } from '../../context/LiturgieContext';
-import { defaultElements } from '../../data/defautlLiturgie';
+
+import { createLectureElements } from '../../utils/createLectureElements';
+import { createDefaultElements } from '../../data/defautlLiturgie';
 
 function LecturePage() {
   // infos globales formulaire
@@ -35,40 +37,9 @@ function LecturePage() {
       setLecturesDuJour(response.data);
 
       // Récup des lectures du api
-      const lecturesElements = [
-        {
-          id: crypto.randomUUID(),
-          type: 'lecture',
-          label: 'Vakiteny 1',
-          data: {
-            reference: response.data.andininy1,
-          },
-        },
-        {
-          id: crypto.randomUUID(),
-          type: 'psaume',
-          label: 'Salamo',
-          data: {
-            reference: response.data.setriny,
-          },
-        },
-        {
-          id: crypto.randomUUID(),
-          type: 'lecture',
-          label: 'Vakiteny 2',
-          data: {
-            reference: response.data.andininy2,
-          },
-        },
-        {
-          id: crypto.randomUUID(),
-          type: 'lecture',
-          label: 'Evanjely',
-          data: {
-            reference: response.data.andininy3,
-          },
-        },
-      ];
+      const lecturesElements = createLectureElements(response.data);
+
+      const defaultElements = createDefaultElements();
 
       // Stockage des données liturgique du api dans le context
       setElements([
