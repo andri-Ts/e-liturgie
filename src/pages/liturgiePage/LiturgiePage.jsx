@@ -60,9 +60,8 @@ function LiturgiePage() {
 
   return (
     <section className="liturgie-page">
-      <h2>Fanomamanana ny hira</h2>
-
       <form onSubmit={handleSubmit}>
+        <h2>Fanomamanana ny hira</h2>
         {/* ===================== */}
         {/* 🔵 INFOS LITURGIQUES */}
         {/* ===================== */}{' '}
