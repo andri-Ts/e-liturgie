@@ -104,9 +104,11 @@ function LiturgiePage() {
         {/* ===================== */}
         {/*  ELEMENTS LITURGIE */}
         {/* ===================== */}
-        {elements.map((element) => (
-          <ElementRender key={element.id} element={element} />
-        ))}
+        <div className="liturgie-elements">
+          {elements.map((element) => (
+            <ElementRender key={element.id} element={element} />
+          ))}
+        </div>
         {/* ===================== */}
         {/* 🔵 ACTIONS */}
         {/* ===================== */}
