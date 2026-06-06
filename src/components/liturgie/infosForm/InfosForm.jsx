@@ -45,19 +45,6 @@ function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
           </div>
         </div>
 
-        {/* Andro liturgique (champ secondaire) */}
-        {/* <div className="liturgical-day">
-          <label htmlFor="jour">Andro litorjika</label>
-
-          <input
-            type="text"
-            id="jour"
-            name="jourLiturgique"
-            value={infosLiturgie.jourLiturgique}
-            onChange={handleChange}
-          />
-        </div> */}
-
         <div className="infos-actions">
           <button type="submit">Haka vakiteny</button>
         </div>

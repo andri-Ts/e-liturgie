@@ -14,12 +14,15 @@
 } */
 
 .layout {
-  display: flex;
+  /* display: flex; */
   min-height: 100vh;
 }
 
 .main-content {
-  flex: 1;
+  margin-left: 15rem;
+
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
 }

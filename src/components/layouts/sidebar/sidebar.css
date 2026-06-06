@@ -1,6 +1,10 @@
 .sidebar {
-  width: 15rem;
+  position: fixed;
 
+  top: 0;
+  left: 0;
+
+  width: 15rem;
   height: 100vh;
 
   background: var(--color-surface);
@@ -10,10 +14,11 @@
   padding: var(--space-md);
 
   display: flex;
-
   flex-direction: column;
 
   gap: var(--space-lg);
+
+  overflow-y: auto;
 }
 
 .sidebar-brand {
