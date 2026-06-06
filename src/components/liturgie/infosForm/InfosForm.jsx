@@ -1,3 +1,5 @@
+import './infosForm.css';
+
 function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -9,10 +11,13 @@ function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
   };
 
   return (
-    <div className="infos">
-      <h2>Informations générales</h2>
+    <section className="infos-card">
+      <div className="infos-header">
+        <h2>Informations générales</h2>
+      </div>
 
-      <form onSubmit={onSubmit}>
+      <form className="infos-form" onSubmit={onSubmit}>
+        {/* Daty + Vondrona */}
         <div className="fields-row">
           <div className="form-field">
             <label htmlFor="date">Daty</label>
@@ -38,23 +43,26 @@ function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
               onChange={handleChange}
             />
           </div>
-
-          <div className="form-field">
-            <label htmlFor="jour">Andro litorjika</label>
-
-            <input
-              type="text"
-              id="jour"
-              name="jourLiturgique"
-              value={infosLiturgie.jourLiturgique}
-              onChange={handleChange}
-            />
-          </div>
         </div>
 
-        <button type="submit">Valider</button>
+        {/* Andro liturgique (champ secondaire) */}
+        {/* <div className="liturgical-day">
+          <label htmlFor="jour">Andro litorjika</label>
+
+          <input
+            type="text"
+            id="jour"
+            name="jourLiturgique"
+            value={infosLiturgie.jourLiturgique}
+            onChange={handleChange}
+          />
+        </div> */}
+
+        <div className="infos-actions">
+          <button type="submit">Haka vakiteny</button>
+        </div>
       </form>
-    </div>
+    </section>
   );
 }
 

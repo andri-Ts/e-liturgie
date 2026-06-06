@@ -1,193 +1,121 @@
-.lecture-page {
-  max-width: 62rem;
-  margin: 2.5rem auto;
-  /* padding: 0 0.2rem;*/
-
+/* .lecture-page {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* .lecture-page {
-  padding: 2rem;
-
-  max-width: 1200px;
-
-  width: 100%;
-
-  margin: 0 auto;
-} */
-
-/* =========================
-   Blocs principaux
-========================= */
-
-.infos,
-.lectures {
-  padding: 1.5rem;
-
-  background: #fff;
-  border: 1px solid #1e9100;
-  border-radius: 0.625rem;
-}
-
-/* =========================
-   Titres
-========================= */
-
-.infos h2,
-.lectures h2 {
-  margin: 0 0 1.5rem;
-
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #222;
-}
-
-/* =========================
-   Formulaire
-========================= */
-
-.infos form {
+.lectures-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.fields-row {
+.lectures-header h2 {
+  color: var(--text-primary);
+
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.lectures-list {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
-.fields-row > * {
-  flex: 1;
-  min-width: 11.25rem;
-}
-
-.fields-row .form-field {
+.lectures-actions {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 1rem;
-}
+  justify-content: flex-end;
+} */
 
-.fields-row .form-field label {
-  font-size: 1rem;
-  color: #333;
-  font-weight: 500;
-}
+.lecture-page {
+  min-height: 100vh;
 
-.fields-row .form-field input {
-  padding: 10px 12px;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  font-size: 14px;
-  outline: none;
-  /* background-color: #fff; */
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
+  background: var(--color-bg);
 
-/* =========================
-   Bloc lectures
-========================= */
+  padding: var(--space-lg);
 
-.lectures {
   display: flex;
+
   flex-direction: column;
-  gap: 1.25rem;
+
+  align-items: center;
 }
 
-/* =========================
-   Boutons
-========================= */
+.lectures-section {
+  width: 100%;
 
-.infos button,
-.lectures button {
-  align-self: center;
+  max-width: 900px;
 
-  padding: 0.625rem 1.25rem;
+  margin-top: var(--space-lg);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-lg);
+
+  /* background: var(--color-surface);
+
+  border-radius: var(--radius-lg);
+
+  padding: var(--space-lg);
+
+  box-shadow: var(--shadow-sm); */
+}
+
+.lectures-header {
+  text-align: left;
+
+  padding-left: var(--space-xs);
+}
+
+.lectures-header h2 {
+  margin: 0;
+
+  font-size: 1.5rem;
+
+  color: var(--color-text);
+
+  font-weight: 700;
+}
+
+.lectures-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-md);
+}
+
+.lectures-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  padding-top: var(--space-md);
+}
+
+.lectures-actions button {
+  background: var(--color-primary);
+
+  color: white;
 
   border: none;
-  border-radius: 0.375rem;
 
-  background-color: #1e9100;
-  color: #fff;
+  padding: 0.9rem 1.5rem;
 
-  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+
   cursor: pointer;
 
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
+  font-weight: 600;
+
+  transition: var(--transition);
 }
 
-.infos button:hover,
-.lectures button:hover {
-  background-color: #166d00;
+.lectures-actions button:hover {
+  background: var(--color-primary-hover);
+
   transform: translateY(-1px);
-}
-
-.infos button:active,
-.lectures button:active {
-  transform: translateY(0);
-}
-
-.btn-style {
-  align-self: center;
-  padding: 0.625rem 1.25rem;
-  border: none;
-  border-radius: 0.375rem;
-  background-color: #1e9100;
-  color: #fff;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-/* =========================
-   RESPONSIVE MOBILE
-========================= */
-@media (max-width: 600px) {
-  .lecture-page {
-    margin: 1rem auto;
-    padding: 0 0.5rem;
-    gap: 1.2rem;
-  }
-
-  .infos,
-  .lectures {
-    padding: 1rem;
-    border-radius: 0.5rem;
-  }
-
-  .infos h2,
-  .lectures h2 {
-    font-size: 1rem;
-  }
-
-  /* formulaire en colonne stricte */
-  .fields-row {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .fields-row > * {
-    min-width: 100%;
-  }
-
-  .fields-row .form-field input {
-    font-size: 16px; /* évite zoom iOS */
-  }
-
-  /* bouton plus large et lisible */
-  .infos button,
-  .lectures button {
-    width: 100%;
-    max-width: 300px;
-  }
 }

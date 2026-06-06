@@ -111,18 +111,26 @@ function LecturePage() {
       />
 
       {lecturesDuJour && (
-        <div className="lectures">
-          <h2>Fanomanana ny vakiteny</h2>
-          {formattedLectures.map((lecture, index) => (
-            <Lecture
-              key={index}
-              titre={lecture.titre}
-              ref={lecture.ref}
-              texte={lecture.texte}
-            />
-          ))}
-          <button onClick={handleNext}>Suivant</button>
-        </div>
+        <section className="lectures-section">
+          <div className="lectures-header">
+            <h2>Fanomanana ny vakiteny</h2>
+          </div>
+
+          <div className="lectures-list">
+            {formattedLectures.map((lecture, index) => (
+              <Lecture
+                key={index}
+                titre={lecture.titre}
+                ref={lecture.ref}
+                texte={lecture.texte}
+              />
+            ))}
+          </div>
+
+          <div className="lectures-actions">
+            <button onClick={handleNext}>Suivant →</button>
+          </div>
+        </section>
       )}
     </section>
   );
