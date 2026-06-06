@@ -14,7 +14,7 @@ function Sidebar() {
       <nav className="sidebar-nav">
         <NavLink to="/">Accueil</NavLink>
         <NavLink to="/lecture">Lectures</NavLink>
-        <NavLink to="/liturgie">Liturgie</NavLink>
+        <NavLink to="/liturgies">Lisitra litorjia</NavLink>
       </nav>
     </aside>
   );

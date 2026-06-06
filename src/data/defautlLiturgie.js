@@ -38,6 +38,14 @@ export function createDefaultElements() {
         titre: '',
       },
     },
+    {
+      id: crypto.randomUUID(),
+      type: 'lecture',
+      label: 'Andininy Aleloia',
+      data: {
+        titre: '',
+      },
+    },
 
     {
       id: crypto.randomUUID(),
