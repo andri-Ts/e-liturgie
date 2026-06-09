@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { useLocation } from 'react-router-dom';
 // import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
 import './liturgiePage.css';
@@ -6,6 +6,7 @@ import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/elementRender/ElementRender';
+import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
 
 function LiturgiePage() {
   const {
@@ -13,6 +14,7 @@ function LiturgiePage() {
     setInfosLiturgie,
     lecturesDuJour,
     elements,
+    setElements,
     addElement,
   } = useLiturgie(); // Context global
   const [isValidate, setIsValidate] = useState(false); // validation pdf
@@ -29,6 +31,13 @@ function LiturgiePage() {
       },
     });
   };
+
+  // -----------------------------
+  // Chargement des éléments litu.
+  // -----------------------------
+  useEffect(() => {
+    setElements(buildLiturgieElements(lecturesDuJour));
+  }, []);
 
   // -----------------------------
   // MODIFICATION INFOS (header)

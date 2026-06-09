@@ -36,28 +36,6 @@ function LecturePage() {
       // stockage global des lectures
       setLecturesDuJour(response.data);
 
-      // Récup des lectures du api
-      const lecturesElements = createLectureElements(response.data);
-
-      const defaultElements = createDefaultElements();
-
-      // Stockage des données liturgique du api dans le context
-      setElements([
-        defaultElements[0],
-        defaultElements[1],
-        defaultElements[2],
-
-        lecturesElements[0],
-        lecturesElements[1],
-        lecturesElements[2],
-
-        defaultElements[3],
-
-        lecturesElements[3],
-
-        ...defaultElements.slice(4), // prends tous les index à partir de 4
-      ]);
-
       // remplir automatiquement le jour liturgique
       setInfosLiturgie((prev) => ({
         ...prev,
