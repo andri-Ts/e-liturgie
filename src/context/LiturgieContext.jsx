@@ -1,47 +1,28 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { buildLiturgieElements } from '../utils/buildLiturgieElements';
 
 export const LiturgieContext = createContext(); // creation du context qu'on va propager
 
 export function LiturgieContextProvider({ children }) {
   // =====================================
-  // CHARGEMENT depuis localStorage
+  // VariableS DU CONTEXTE
   // =====================================
-  const savedLocalStorage = JSON.parse(localStorage.getItem('liturgie')) || {};
+  // Var infos sur la liturgie
+  const [infosLiturgie, setInfosLiturgie] = useState({
+    dateMesse: '',
+    jourLiturgique: '',
+    entite: '',
+  });
 
-  // =====================================
-  // Variable INFOS LITURGIES
-  // =====================================
-  const [infosLiturgie, setInfosLiturgie] = useState(
-    savedLocalStorage?.infosLiturgie || {
-      dateMesse: '',
-      jourLiturgique: '',
-      entite: '',
-    },
-  );
-
-  // =====================================
   // Variable LECTURES API
-  // =====================================
-  const [lecturesDuJour, setLecturesDuJour] = useState(
-    savedLocalStorage.lecturesDuJour || null,
-  );
+  const [lecturesDuJour, setLecturesDuJour] = useState(null);
 
-  // =====================================
   // Variable ELEMENTS DE LA LITURGIE
-  // =====================================
-  const [elements, setElements] = useState(savedLocalStorage?.elements || []);
+  const [elements, setElements] = useState([]);
 
   // =====================================
-  // SAUVEGARDE AUTOMATIQUE
-  // =====================================
-  useEffect(() => {
-    localStorage.setItem(
-      'liturgie',
-      JSON.stringify({ infosLiturgie, lecturesDuJour, elements }),
-    );
-  }, [infosLiturgie, lecturesDuJour, elements]);
-
   // FONCTIONS pour les éléments
+  // =====================================
   const addElement = (element) => {
     setElements((prev) => [...prev, element]);
   };
@@ -63,6 +44,18 @@ export function LiturgieContextProvider({ children }) {
     );
   };
 
+  // =====================================
+  // FONCTIONS pour charger les variables
+  // =====================================
+  const initLiturgieData = (apiGlobalInfos) => {
+    setLecturesDuJour(apiGlobalInfos);
+    setElements(buildLiturgieElements(apiGlobalInfos)); // pour créer tous les éléments (lecture et chant) d'un liturgie
+    setInfosLiturgie((prev) => ({
+      ...prev,
+      jourLiturgique: apiGlobalInfos.androLitorjika || '', // mettre à jour le andro litorjika
+    }));
+  };
+
   // Composant qui redistribuera les variables et data dans l'applicaiton
   return (
     <LiturgieContext.Provider
@@ -78,6 +71,8 @@ export function LiturgieContextProvider({ children }) {
         addElement,
         removeElement,
         updateElement,
+
+        initLiturgieData,
       }}
     >
       {/* children = tous les composants enfants qui pourront accéder à user et setUser sans props */}

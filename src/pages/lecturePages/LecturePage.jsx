@@ -7,19 +7,10 @@ import InfosForm from '../../components/liturgie/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
 import { useLiturgie } from '../../context/LiturgieContext';
 
-import { createLectureElements } from '../../utils/createLectureElements';
-import { createDefaultElements } from '../../data/defautlLiturgie';
-import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
-
 function LecturePage() {
   // infos globales formulaire
-  const {
-    infosLiturgie,
-    setInfosLiturgie,
-    lecturesDuJour,
-    setLecturesDuJour,
-    setElements,
-  } = useLiturgie();
+  const { infosLiturgie, setInfosLiturgie, lecturesDuJour, initLiturgieData } =
+    useLiturgie();
   const nav = useNavigate();
 
   // formatage des données api lectures en tab
@@ -33,17 +24,10 @@ function LecturePage() {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(infosLiturgie.dateMesse).toISOString(),
       });
-      // console.log(response.data);
-      // stockage global des lectures
-      setLecturesDuJour(response.data);
+      const infosGlobales = response.data;
+      // console.log(infosGlobales);
 
-      setElements(buildLiturgieElements(response.data));
-
-      // remplir automatiquement le jour liturgique
-      setInfosLiturgie((prev) => ({
-        ...prev,
-        jourLiturgique: response.data.androLitorjika || '',
-      }));
+      initLiturgieData(infosGlobales);
     } catch (error) {
       console.log(error);
     }

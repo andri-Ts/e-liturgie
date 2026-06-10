@@ -1,15 +1,10 @@
 import { createDefaultElements } from '../data/defautlLiturgie';
+import { createChantElements } from './createChantElements';
 import { createLectureElements } from './createLectureElements';
 
-export function buildLiturgieElements(data) {
-  const chants = createDefaultElements();
-
-  // pour empêcher l'erreur au cas où il n'y a pas de données lectures de l'api
-  if (!data) {
-    return chants;
-  }
-
-  const lectures = createLectureElements(data);
+export function buildLiturgieElements(lecturesData) {
+  const chants = createChantElements();
+  const lectures = createLectureElements(lecturesData);
 
   return [
     chants[0],
