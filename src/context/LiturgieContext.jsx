@@ -47,12 +47,12 @@ export function LiturgieContextProvider({ children }) {
   // =====================================
   // FONCTIONS pour charger les variables
   // =====================================
-  const initLiturgieData = (apiGlobalInfos) => {
-    setLecturesDuJour(apiGlobalInfos);
-    setElements(buildLiturgieElements(apiGlobalInfos)); // pour créer tous les éléments (lecture et chant) d'un liturgie
+  const initLiturgieData = (apiInfos) => {
+    setLecturesDuJour(apiInfos);
+    setElements(buildLiturgieElements(apiInfos)); // pour créer tous les éléments (lecture et chant) d'un liturgie
     setInfosLiturgie((prev) => ({
       ...prev,
-      jourLiturgique: apiGlobalInfos.androLitorjika || '', // mettre à jour le andro litorjika
+      jourLiturgique: apiInfos.androLitorjika || '', // mettre à jour le andro litorjika
     }));
   };
 
@@ -64,10 +64,8 @@ export function LiturgieContextProvider({ children }) {
         setInfosLiturgie,
 
         lecturesDuJour,
-        setLecturesDuJour,
 
         elements,
-        setElements,
         addElement,
         removeElement,
         updateElement,

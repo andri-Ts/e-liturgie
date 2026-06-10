@@ -20,6 +20,7 @@ function LecturePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Récup infos du vakiteny avec api
     try {
       const response = await apiRequest.post('/Sorona/Vakiteny', {
         date: new Date(infosLiturgie.dateMesse).toISOString(),
@@ -27,7 +28,7 @@ function LecturePage() {
       const infosGlobales = response.data;
       // console.log(infosGlobales);
 
-      initLiturgieData(infosGlobales);
+      initLiturgieData(infosGlobales); // initialise les elements de la liturgie selon les données de l'apiLecture
     } catch (error) {
       console.log(error);
     }
