@@ -19,6 +19,8 @@ function LiturgiePage() {
   } = useLiturgie(); // Context global
   const [isValidate, setIsValidate] = useState(false); // validation pdf
 
+  console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
+
   // Fonction pour créer un chant
   const handleAddChant = () => {
     addElement({
@@ -35,9 +37,17 @@ function LiturgiePage() {
   // -----------------------------
   // Chargement des éléments litu.
   // -----------------------------
-  useEffect(() => {
-    setElements(buildLiturgieElements(lecturesDuJour));
-  }, []);
+  // useEffect(() => {
+  //   if (!lecturesDuJour) return;
+
+  //   const data = buildLiturgieElements(lecturesDuJour);
+
+  //   console.log('ELEMENTS GENERES', data);
+
+  //   if (elements.length === 0) {
+  //     setElements(data);
+  //   }
+  // }, [lecturesDuJour, elements.length, setElements]);
 
   // -----------------------------
   // MODIFICATION INFOS (header)
@@ -66,6 +76,11 @@ function LiturgiePage() {
     // console.log(liturgieData);
     setIsValidate(true);
   };
+
+  // console.log('ELEMENTS CONTEXT', elements);
+  // console.log('LECTURES', lecturesDuJour);
+  // console.log('ELEMENTS', elements);
+  // console.log('ELEMENTS LENGTH', elements.length);
 
   return (
     <section className="liturgie-page">

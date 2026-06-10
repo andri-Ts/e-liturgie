@@ -6,7 +6,7 @@ export function LiturgieContextProvider({ children }) {
   // =====================================
   // CHARGEMENT depuis localStorage
   // =====================================
-  const savedLocalStorage = JSON.parse(localStorage.getItem('liturgie'));
+  const savedLocalStorage = JSON.parse(localStorage.getItem('liturgie')) || {};
 
   // =====================================
   // Variable INFOS LITURGIES
@@ -22,7 +22,9 @@ export function LiturgieContextProvider({ children }) {
   // =====================================
   // Variable LECTURES API
   // =====================================
-  const [lecturesDuJour, setLecturesDuJour] = useState(null);
+  const [lecturesDuJour, setLecturesDuJour] = useState(
+    savedLocalStorage.lecturesDuJour || null,
+  );
 
   // =====================================
   // Variable ELEMENTS DE LA LITURGIE
@@ -35,7 +37,7 @@ export function LiturgieContextProvider({ children }) {
   useEffect(() => {
     localStorage.setItem(
       'liturgie',
-      JSON.stringify({ infosLiturgie, elements }),
+      JSON.stringify({ infosLiturgie, lecturesDuJour, elements }),
     );
   }, [infosLiturgie, lecturesDuJour, elements]);
 

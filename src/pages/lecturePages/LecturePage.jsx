@@ -9,6 +9,7 @@ import { useLiturgie } from '../../context/LiturgieContext';
 
 import { createLectureElements } from '../../utils/createLectureElements';
 import { createDefaultElements } from '../../data/defautlLiturgie';
+import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
 
 function LecturePage() {
   // infos globales formulaire
@@ -35,6 +36,8 @@ function LecturePage() {
       // console.log(response.data);
       // stockage global des lectures
       setLecturesDuJour(response.data);
+
+      setElements(buildLiturgieElements(response.data));
 
       // remplir automatiquement le jour liturgique
       setInfosLiturgie((prev) => ({
