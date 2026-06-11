@@ -26,6 +26,14 @@ export function createLectureElements(data) {
         reference: data.andininy2,
       },
     },
+    {
+      id: crypto.randomUUID(),
+      type: 'lecture',
+      label: 'Andininy Aleloia',
+      data: {
+        reference: '',
+      },
+    },
 
     {
       id: crypto.randomUUID(),

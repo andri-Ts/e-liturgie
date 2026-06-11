@@ -1,4 +1,3 @@
-import { createDefaultElements } from '../data/defautlLiturgie';
 import { createChantElements } from './createChantElements';
 import { createLectureElements } from './createLectureElements';
 
@@ -18,6 +17,7 @@ export function buildLiturgieElements(lecturesData) {
     chants[3],
 
     lectures[3],
+    lectures[4],
 
     ...chants.slice(4),
   ];

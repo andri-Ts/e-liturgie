@@ -13,14 +13,14 @@ export function buildLectures(data) {
       texte: data.salamo,
     },
     {
-      titre: data.boky2,
-      ref: data.andininy2,
-      texte: data.vakiteny2,
-    },
-    {
       titre: data.boky3,
       ref: data.andininy3,
       texte: data.vakiteny3,
+    },
+    {
+      titre: data.boky2,
+      ref: data.andininy2,
+      texte: data.vakiteny2,
     },
   ];
 }

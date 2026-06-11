@@ -8,9 +8,8 @@ function HeaderBar() {
 
   const titles = {
     '/': '🏠 Accueil',
-    '/lecture': '📖 Lectures',
-    '/liturgie': '🎵 Liturgie',
-    '/liturgies': 'Lisitra litorjia',
+    '/lecture': '📖 Fanomanana vakiteny',
+    '/liturgie': '📖 Fanomanana hira',
     '/calendrier': 'Kalendrie',
   };
 

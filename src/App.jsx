@@ -11,7 +11,7 @@ function App() {
       path: '/',
       element: <Layout />,
       children: [
-        { index: true, element: <HomePage /> },
+        { index: true, element: <DefaultPage /> },
         {
           path: '/lecture',
           element: <LecturePage />,
