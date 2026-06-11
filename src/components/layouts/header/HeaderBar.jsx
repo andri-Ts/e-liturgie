@@ -10,6 +10,8 @@ function HeaderBar() {
     '/': '🏠 Accueil',
     '/lecture': '📖 Lectures',
     '/liturgie': '🎵 Liturgie',
+    '/liturgies': 'Lisitra litorjia',
+    '/calendrier': 'Kalendrie',
   };
 
   return (

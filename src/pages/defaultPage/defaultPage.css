@@ -1,0 +1,35 @@
+.default-page {
+  min-height: 70vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem;
+}
+
+.default-card {
+  max-width: 500px;
+
+  padding: 2rem;
+
+  text-align: center;
+
+  background: var(--color-surface);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.default-card h1 {
+  margin: 0 0 1rem;
+
+  color: var(--color-primary);
+}
+
+.default-card p {
+  margin: 0;
+
+  color: #666;
+}

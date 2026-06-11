@@ -12,7 +12,7 @@ function Sidebar() {
       </div>
 
       <nav className="sidebar-nav">
-        <NavLink to="/">Accueil</NavLink>
+        <NavLink to="/accueil">Accueil</NavLink>
         <NavLink to="/lecture">Fanomanana litorjia</NavLink>
         <NavLink to="/liturgies">Lisitra litorjia</NavLink>
         <NavLink to="/calendrier">Kalandrie litorjika</NavLink>

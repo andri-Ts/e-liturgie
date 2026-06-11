@@ -3,6 +3,7 @@ import LecturePage from './pages/lecturePages/LecturePage';
 import LiturgiePage from './pages/liturgiePage/LiturgiePage';
 import HomePage from './pages/home/HomePage';
 import Layout from './components/layouts/layout/Layout';
+import DefaultPage from './pages/defaultPage/DefaultPage';
 
 function App() {
   const fkmpRouter = createBrowserRouter([
@@ -18,6 +19,11 @@ function App() {
         {
           path: '/liturgie',
           element: <LiturgiePage />,
+        },
+        // Route par defaut
+        {
+          path: '*',
+          element: <DefaultPage />,
         },
       ],
     },
