@@ -62,11 +62,6 @@ function LiturgiePage() {
     setIsValidate(true);
   };
 
-  // console.log('ELEMENTS CONTEXT', elements);
-  // console.log('LECTURES', lecturesDuJour);
-  // console.log('ELEMENTS', elements);
-  // console.log('ELEMENTS LENGTH', elements.length);
-
   return (
     <section className="liturgie-page">
       <form onSubmit={handleSubmit}>
@@ -74,7 +69,7 @@ function LiturgiePage() {
         {/* ===================== */}
         {/* 🔵 INFOS LITURGIQUES */}
         {/* ===================== */}{' '}
-        <div className="infos-liturgie">
+        <section className="infos-liturgie">
           <div className="item">
             <label htmlFor="date">Daty</label>
             <input
@@ -108,19 +103,19 @@ function LiturgiePage() {
               value={infosLiturgie.entite}
             />
           </div>
-        </div>
+        </section>
         {/* ===================== */}
         {/*  ELEMENTS LITURGIE */}
         {/* ===================== */}
-        <div className="liturgie-elements">
+        <section className="liturgie-elements">
           {elements.map((element) => (
             <ElementRender key={element.id} element={element} />
           ))}
-        </div>
+        </section>
         {/* ===================== */}
         {/* 🔵 ACTIONS */}
         {/* ===================== */}
-        <div className="actions">
+        <section className="actions">
           <button onClick={handleAddChant} type="button">
             + Hira
           </button>
@@ -131,7 +126,7 @@ function LiturgiePage() {
               Télécharger PDF
             </button>
           )}
-        </div>
+        </section>
         {/* ===================== */}
         {/* PDF HIDDEN */}
         {/* ===================== */}

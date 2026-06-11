@@ -15,7 +15,7 @@ function Sidebar() {
         <NavLink to="/">Accueil</NavLink>
         <NavLink to="/lecture">Fanomanana litorjia</NavLink>
         <NavLink to="/liturgies">Lisitra litorjia</NavLink>
-        <NavLink to="/calendrier">Kalandrier litorjika</NavLink>
+        <NavLink to="/calendrier">Kalandrie litorjika</NavLink>
       </nav>
     </aside>
   );
