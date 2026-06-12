@@ -3,6 +3,10 @@ import jsPDF from 'jspdf';
 
 export default async function downloadPdf() {
   const input = document.querySelector('.pdf-container');
+  if (!input) {
+    console.error('pdf-container introuvable');
+    return;
+  }
 
   const canvas = await html2canvas(input, {
     scale: 3,
@@ -21,18 +25,19 @@ export default async function downloadPdf() {
 
   // Taille A4
   const pageWidth = 210;
-  const pageHeight = 297;
+  // const pageHeight = 297;
 
   // Marges
-  const margin = 10;
+  const marginX = 10;
+  const marginY = 1;
 
   // Largeur utile
-  const contentWidth = pageWidth - margin * 2;
+  const contentWidth = pageWidth - marginX * 2;
 
   // Calcul hauteur proportionnelle
   const contentHeight = (canvas.height * contentWidth) / canvas.width;
 
-  pdf.addImage(imgData, 'PNG', margin, margin, contentWidth, contentHeight);
+  pdf.addImage(imgData, 'PNG', marginX, marginY, contentWidth, contentHeight);
 
   pdf.save('liturgie.pdf');
 }

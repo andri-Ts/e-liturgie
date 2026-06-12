@@ -37,10 +37,10 @@
 
 .sidebar-brand img {
   width: 66px;
-
   height: 66px;
 
   object-fit: cover;
+  border-radius: 30%;
 }
 
 .brand-text {
