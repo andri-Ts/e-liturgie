@@ -36,7 +36,7 @@ function LecturePage() {
 
   // pour envoyer les data du formulaire vers la page suivante
   const handleNext = () => {
-    nav('/liturgie');
+    nav('/fanomanana-litorjia/hira');
   };
 
   return (

@@ -13,7 +13,9 @@ function Sidebar() {
 
       <nav className="sidebar-nav">
         <NavLink to="/">Accueil</NavLink>
-        <NavLink to="/lecture">Fanomanana litorjia</NavLink>
+        <NavLink to="/fanomanana-litorjia/vakiteny">
+          Fanomanana litorjia
+        </NavLink>
         <NavLink to="/calendrier">Kalandrie litorjika</NavLink>
       </nav>
     </aside>

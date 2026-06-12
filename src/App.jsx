@@ -13,11 +13,11 @@ function App() {
       children: [
         { index: true, element: <DefaultPage /> },
         {
-          path: '/lecture',
+          path: '/fanomanana-litorjia/vakiteny',
           element: <LecturePage />,
         },
         {
-          path: '/liturgie',
+          path: '/fanomanana-litorjia/hira',
           element: <LiturgiePage />,
         },
         // Route par defaut
