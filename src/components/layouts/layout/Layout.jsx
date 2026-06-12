@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import './layout.css';
 import Sidebar from '../sidebar/Sidebar';
 import Header from '../header/HeaderBar';
+import ScrollToTop from '../ScrollToTop';
 
 function Layout() {
   return (
@@ -14,6 +15,7 @@ function Layout() {
         <Header />
 
         <main>
+          <ScrollToTop />
           <Outlet />
         </main>
       </div>
