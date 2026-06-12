@@ -21,6 +21,20 @@ function LiturgiePage() {
 
   // console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
 
+  // State warning pour ne pas perdre de données
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   // Fonction pour créer un chant
   const handleAddChant = () => {
     addElement({
