@@ -3,7 +3,7 @@ import './headerBar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-function HeaderBar() {
+function HeaderBar({ onMenuClick }) {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
@@ -31,6 +31,9 @@ function HeaderBar() {
 
   return (
     <header className={`page-header ${scrolled ? 'page-header--glass' : ''}`}>
+      <button className="menu-btn" onClick={onMenuClick}>
+        ☰
+      </button>
       <h1>{titles[location.pathname] || 'Page'}</h1>
 
       <button onClick={() => navigate('/fanomanana-litorjia/vakiteny')}>
