@@ -49,9 +49,9 @@ function LecturePage() {
 
       {lecturesDuJour && (
         <section className="lectures-section">
-          <div className="lectures-header">
+          {/* <div className="lectures-header">
             <h2>Fanomanana ny vakiteny</h2>
-          </div>
+          </div> */}
 
           <div className="lectures-list">
             {formattedLectures.map((lecture, index) => (

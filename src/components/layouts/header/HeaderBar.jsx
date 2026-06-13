@@ -37,7 +37,8 @@ function HeaderBar({ onMenuClick }) {
       <h1>{titles[location.pathname] || 'Page'}</h1>
 
       <button onClick={() => navigate('/fanomanana-litorjia/vakiteny')}>
-        + Nouvelle liturgie
+        <span className="desktop-label">+ Nouvelle liturgie</span>
+        <span className="mobile-label">+</span>
       </button>
     </header>
   );

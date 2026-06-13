@@ -90,3 +90,53 @@
 
   transform: translateY(-1px);
 }
+
+/* TABLETTE */
+
+@media (max-width: 1024px) {
+  .lecture-page {
+    padding: 0.75rem;
+  }
+
+  .lectures-section {
+    margin-top: 1rem;
+
+    gap: 1rem;
+  }
+
+  .lectures-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .lectures-actions button {
+    width: 100%;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .lecture-page {
+    padding: 0.5rem;
+  }
+
+  .lectures-header {
+    padding-left: 0;
+  }
+
+  .lectures-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .lectures-actions {
+    justify-content: stretch;
+  }
+
+  .lectures-actions button {
+    width: 100%;
+
+    padding: 0.85rem;
+
+    font-size: 0.9rem;
+  }
+}
