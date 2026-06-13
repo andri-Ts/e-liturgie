@@ -3,8 +3,6 @@ import jsPDF from 'jspdf';
 import { useLiturgie } from '../context/LiturgieContext';
 
 export default async function downloadPdf() {
-  const { infosLiturgie } = useLiturgie();
-
   const input = document.querySelector('.pdf-container');
   if (!input) {
     console.error('pdf-container introuvable');
@@ -43,5 +41,5 @@ export default async function downloadPdf() {
   pdf.addImage(imgData, 'PNG', marginX, marginY, contentWidth, contentHeight);
 
   pdf.save('liturgie.pdf');
-  pdf.save(`litorjia-${infosLiturgie.dateMesse}.pdf`);
+  // pdf.save(`litorjia-${infosLiturgie.dateMesse}.pdf`);
 }
