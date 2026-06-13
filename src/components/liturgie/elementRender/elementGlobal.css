@@ -100,3 +100,62 @@
 
   box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
 }
+
+.element-card-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .element-card {
+    grid-template-columns: 0.25fr 1fr 0.25fr;
+    gap: 0.6rem;
+    padding: 0.5rem;
+  }
+
+  .element-card input {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .element-card {
+    display: none;
+  }
+
+  .element-card-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .mobile-fields {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .mobile-fields input {
+    padding: 0.6rem 0.8rem;
+
+    border-radius: var(--radius-sm);
+
+    border: 1px solid var(--color-border);
+
+    /* background: var(--color-bg); */
+
+    font-size: 0.95rem;
+
+    column-gap: var(--space-sm);
+
+    row-gap: 0;
+  }
+
+  .mobile-fields input:first-child {
+    flex: 1;
+  }
+
+  .mobile-fields input:last-child {
+    width: 80px;
+  }
+}

@@ -21,31 +21,57 @@ function ChantForm({ element, updateElement }) {
   };
 
   return (
-    <div className="element-card">
-      <div className="element-label">{element.label}</div>
+    <>
+      <div className="element-card desktop-layout">
+        <div className="element-label">{element.label}</div>
 
-      <div className="element-input">
-        <input
-          type="text"
-          value={element.data.titre}
-          onChange={handleChangeTitre}
-        />
-      </div>
-
-      {/* PAGE TOUJOURS PRESENTE */}
-      <div className="element-input page-hasina">
-        {element.data.page !== undefined ? (
+        <div className="element-input">
           <input
-            type="number"
-            value={element.data.page}
-            onChange={handleChangePage}
-            placeholder="Page"
+            type="text"
+            value={element.data.titre}
+            onChange={handleChangeTitre}
           />
-        ) : (
-          <span style={{ opacity: 0.3 }}>—</span>
-        )}
+        </div>
+
+        {/* PAGE TOUJOURS PRESENTE */}
+        <div className="element-input page-hasina">
+          {element.data.page !== undefined ? (
+            <input
+              type="number"
+              value={element.data.page}
+              onChange={handleChangePage}
+              placeholder="Page"
+            />
+          ) : (
+            <span style={{ opacity: 0.3 }}>—</span>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* Mobile */}
+      <div className="element-card-mobile">
+        <div className="element-label">{element.label}</div>
+
+        <div className="mobile-fields">
+          <input
+            type="text"
+            value={element.data.titre}
+            onChange={handleChangeTitre}
+          />
+
+          {element.data.page !== undefined ? (
+            <input
+              type="number"
+              value={element.data.page}
+              onChange={handleChangePage}
+              placeholder="Page"
+            />
+          ) : (
+            <span style={{ opacity: 0.3 }}>—</span>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
