@@ -69,6 +69,11 @@ function LecturePage() {
               >
                 Jereo ny vakiteny eto →
               </a>
+              <div className="lectures-actions">
+                <button onClick={handleNext}>
+                  Hanohy ny fanomanana ny litorjia →
+                </button>
+              </div>
             </div>
           ) : (
             <>
