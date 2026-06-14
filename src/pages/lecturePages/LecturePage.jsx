@@ -7,6 +7,7 @@ import InfosForm from '../../components/liturgie/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
 import { useLiturgie } from '../../context/LiturgieContext';
 import { getLectures } from '../../services/liturgieService';
+import { getLecturesFallBackUrl } from '../../utils/getLecturesFallBackUrl';
 
 function LecturePage() {
   // infos globales formulaire
@@ -16,6 +17,13 @@ function LecturePage() {
 
   // formatage des données api lectures en tab
   const formattedLectures = buildLectures(lecturesDuJour);
+
+  // variable pour savoir s'il y a un pb avec les lectures
+  const hasMissingLecture =
+    lecturesDuJour &&
+    (lecturesDuJour.vakiteny1 === null ||
+      lecturesDuJour.vakiteny2 === null ||
+      lecturesDuJour.vakiteny3 === null);
 
   // submit formulaire
   const handleSubmit = async (e) => {
@@ -51,20 +59,35 @@ function LecturePage() {
             <h2>Fanomanana ny vakiteny</h2>
           </div> */}
 
-          <div className="lectures-list">
-            {formattedLectures.map((lecture, index) => (
-              <Lecture
-                key={index}
-                titre={lecture.titre}
-                ref={lecture.ref}
-                texte={lecture.texte}
-              />
-            ))}
-          </div>
+          {hasMissingLecture ? (
+            <div className="lectures-fallback">
+              <p>Tsy hita ny vakiteny amin'ity daty ity...</p>
+              <a
+                href={getLecturesFallBackUrl(infosLiturgie.dateMesse)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Jereo ny vakiteny eto →
+              </a>
+            </div>
+          ) : (
+            <>
+              <div className="lectures-list">
+                {formattedLectures.map((lecture, index) => (
+                  <Lecture
+                    key={index}
+                    titre={lecture.titre}
+                    ref={lecture.ref}
+                    texte={lecture.texte}
+                  />
+                ))}
+              </div>
 
-          <div className="lectures-actions">
-            <button onClick={handleNext}>Suivant →</button>
-          </div>
+              <div className="lectures-actions">
+                <button onClick={handleNext}>Suivant →</button>
+              </div>
+            </>
+          )}
         </section>
       )}
     </section>
