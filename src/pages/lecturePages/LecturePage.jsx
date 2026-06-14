@@ -6,6 +6,7 @@ import apiRequest from '../../services/apiRequest';
 import InfosForm from '../../components/liturgie/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
 import { useLiturgie } from '../../context/LiturgieContext';
+import { getLectures } from '../../services/liturgieService';
 
 function LecturePage() {
   // infos globales formulaire
@@ -22,13 +23,10 @@ function LecturePage() {
 
     // Récup infos du vakiteny avec api
     try {
-      const response = await apiRequest.post('/Sorona/Vakiteny', {
-        date: new Date(infosLiturgie.dateMesse).toISOString(),
-      });
-      const infosGlobales = response.data;
-      // console.log(infosGlobales);
+      const infosGenLectures = await getLectures(infosLiturgie.dateMesse);
+      console.log(infosGenLectures);
 
-      initLiturgieData(infosGlobales); // initialise les elements de la liturgie selon les données de l'apiLecture
+      initLiturgieData(infosGenLectures); // initialise les elements de la liturgie selon les données de l'apiLecture
     } catch (error) {
       console.log(error);
     }
