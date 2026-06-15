@@ -6,7 +6,6 @@ import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/elementRender/ElementRender';
-import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
 import { buildLiturgiePayload } from '../../utils/buildLiturgiePayload';
 import { createLiturgie } from '../../services/liturgieService';
 
@@ -76,7 +75,7 @@ function LiturgiePage() {
       );
       console.log(payload);
 
-      const res = await createLiturgie(payload);
+      // const res = await createLiturgie(payload);
       console.log(res);
     } catch (error) {
       console.error(error);
