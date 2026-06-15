@@ -8,11 +8,13 @@ import { buildLectures } from '../../utils/buildLectures';
 import { useLiturgie } from '../../context/LiturgieContext';
 import { getLectures } from '../../services/liturgieService';
 import { getLecturesFallBackUrl } from '../../utils/getLecturesFallBackUrl';
+import { useLectures } from '../../context/LecturesContext';
+import { useInfos } from '../../context/InfosContext';
 
 function LecturePage() {
   // infos globales formulaire
-  const { infosLiturgie, setInfosLiturgie, lecturesDuJour, initLiturgieData } =
-    useLiturgie();
+  const { lecturesDuJour, initLiturgieData } = useLectures();
+  const { infosLiturgie, setInfosLiturgie } = useInfos();
   const nav = useNavigate();
 
   // formatage des données api lectures en tab

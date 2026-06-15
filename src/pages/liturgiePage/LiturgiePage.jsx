@@ -10,17 +10,16 @@ import { buildLiturgiePayload } from '../../utils/buildLiturgiePayload';
 import { createLiturgie } from '../../services/liturgieService';
 import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
 import { mockElementsLiturgie } from '../../mocks/mockElementsLiturgie';
+import { useInfos } from '../../context/InfosContext';
+import { useElements } from '../../context/ElementsContext';
 
 function LiturgiePage() {
-  const {
-    infosLiturgie,
-    setInfosLiturgie,
-    lecturesDuJour,
-    elements,
-    setElements,
-    addElement,
-  } = useLiturgie(); // Context global
-  const [isValidate, setIsValidate] = useState(false); // validation pdf
+  // Appel des variables contexts
+  const { infosLiturgie, setInfosLiturgie } = useInfos();
+  const { elements, setElements } = useElements();
+
+  // validation pdf
+  const [isValidate, setIsValidate] = useState(false);
 
   // console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
   // console.log('elements: ', elements);

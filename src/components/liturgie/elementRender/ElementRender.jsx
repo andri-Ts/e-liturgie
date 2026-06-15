@@ -2,9 +2,10 @@ import React from 'react';
 import LectureForm from '../lectureForm/LectureForm';
 import ChantForm from '../chantForm/ChantForm';
 import { useLiturgie } from '../../../context/LiturgieContext';
+import { useElements } from '../../../context/ElementsContext';
 
 function ElementRender({ element }) {
-  const { updateElement } = useLiturgie(); // pour ecrire dans le formuliare du chant
+  const { updateElement } = useElements(); // pour ecrire dans le formuliare du chant
 
   switch (element.type) {
     case 'lecture':
