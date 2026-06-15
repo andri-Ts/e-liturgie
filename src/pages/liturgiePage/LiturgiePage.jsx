@@ -23,7 +23,7 @@ function LiturgiePage() {
   const [isValidate, setIsValidate] = useState(false); // validation pdf
 
   // console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
-  console.log('elements: ', elements);
+  // console.log('elements: ', elements);
 
   // pour tester
   const loadDemoData = () => {
@@ -109,7 +109,7 @@ function LiturgiePage() {
 
   return (
     <section className="liturgie-page">
-      <button onClick={loadDemoData}>Charger données de test</button>
+      {/*<button onClick={loadDemoData}>Charger données de test</button>*/}
 
       <form onSubmit={handleSubmit}>
         {/* <h2>Fanomamanana ny hira</h2> */}
