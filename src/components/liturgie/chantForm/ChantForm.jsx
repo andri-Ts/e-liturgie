@@ -67,7 +67,8 @@ function ChantForm({ element, updateElement }) {
               placeholder="Page"
             />
           ) : (
-            <span style={{ opacity: 0.3 }}>—</span>
+            // <span style={{ opacity: 0.3 }}>—</span>
+            ''
           )}
         </div>
       </div>

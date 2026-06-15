@@ -16,22 +16,35 @@ function LectureForm({ element }) {
   };
 
   return (
-    <div className="element-card">
-      {/* LABEL */}
-      <div className="element-label">{element.label}</div>
+    <>
+      {/* Desktop / tablette */}
+      <div className="element-card">
+        <div className="element-label">{element.label}</div>
 
-      {/* REFERENCE */}
-      <div className="element-input">
-        <input
-          type="text"
-          value={element.data.reference || ''}
-          onChange={handleChangeRefLecture}
-        />
+        <div className="element-input">
+          <input
+            type="text"
+            value={element.data.reference || ''}
+            onChange={handleChangeRefLecture}
+          />
+        </div>
+
+        <div className="element-input" />
       </div>
 
-      {/* COLONNE VIDE (alignement PDF) */}
-      <div className="element-input" />
-    </div>
+      {/* Mobile */}
+      <div className="element-card-mobile">
+        <div className="element-label">{element.label}</div>
+
+        <div className="mobile-fields">
+          <input
+            type="text"
+            value={element.data.reference || ''}
+            onChange={handleChangeRefLecture}
+          />
+        </div>
+      </div>
+    </>
   );
 }
 
