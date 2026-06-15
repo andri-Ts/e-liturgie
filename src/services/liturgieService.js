@@ -8,3 +8,10 @@ export async function getLectures(dateMesse) {
 
   return response.data;
 }
+
+// poster la liturgie crée
+export async function createLiturgie(payload) {
+  const response = await apiRequest.post('/Messe/Create', payload);
+
+  return response.data;
+}

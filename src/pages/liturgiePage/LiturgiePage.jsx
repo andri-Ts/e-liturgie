@@ -7,6 +7,8 @@ import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/elementRender/ElementRender';
 import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
+import { buildLiturgiePayload } from '../../utils/buildLiturgiePayload';
+import { createLiturgie } from '../../services/liturgieService';
 
 function LiturgiePage() {
   const {
@@ -36,7 +38,9 @@ function LiturgiePage() {
     };
   }, []);
 
-  // Fonction pour créer un chant
+  // -----------------------------
+  // CRUD CHANT/LECTURES/Autre...
+  // -----------------------------
   const handleAddChant = () => {
     addElement({
       id: crypto.randomUUID(),
@@ -61,6 +65,25 @@ function LiturgiePage() {
   };
 
   // -----------------------------
+  // SAVE LITURGIE
+  // -----------------------------
+  const handleSaveLiturgie = async () => {
+    try {
+      const payload = buildLiturgiePayload(
+        infosLiturgie,
+        lecturesDuJour,
+        elements,
+      );
+      console.log(payload);
+
+      const res = await createLiturgie(payload);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // -----------------------------
   // PDF
   // -----------------------------
   const handleValidate = () => {
@@ -74,6 +97,7 @@ function LiturgiePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(liturgieData);
+    handleSaveLiturgie();
     setIsValidate(true);
   };
 
@@ -134,6 +158,7 @@ function LiturgiePage() {
           <button onClick={handleAddChant} type="button">
             + Hira
           </button>
+
           <button type="submit">Valider</button>
 
           {isValidate && (
