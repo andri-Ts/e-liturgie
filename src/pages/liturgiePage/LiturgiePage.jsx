@@ -6,13 +6,10 @@ import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/elementRender/ElementRender';
-<<<<<<< HEAD
 import { buildLiturgiePayload } from '../../utils/buildLiturgiePayload';
 import { createLiturgie } from '../../services/liturgieService';
-=======
 import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
 import { mockElementsLiturgie } from '../../mocks/mockElementsLiturgie';
->>>>>>> feat/utils
 
 function LiturgiePage() {
   const {
