@@ -13,7 +13,11 @@ function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
   return (
     <section className="infos-card">
       <div className="infos-header">
-        <h2>Informations générales</h2>
+        <h2>Informations sur la messe</h2>
+      </div>
+
+      <div className="warning-banner">
+        ⚠️ Ny andro Alahady ihany no efa voamarina tsara amin'izao fotoana izao.
       </div>
 
       <form className="infos-form" onSubmit={onSubmit}>
@@ -33,7 +37,7 @@ function InfosForm({ infosLiturgie, setInfosLiturgie, onSubmit }) {
           </div>
 
           <div className="form-field">
-            <label htmlFor="entite">Vondrona</label>
+            <label htmlFor="entite">Vondrona mpanomana</label>
 
             <input
               type="text"
