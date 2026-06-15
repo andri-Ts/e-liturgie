@@ -74,14 +74,21 @@
   display: none;
 }
 
-/* MENU BURGER */
+/* Mobile */
 @media (max-width: 768px) {
   .page-header {
     padding: 0.75rem 1rem;
+
+    background: #2f7d32;
+    color: white;
+
+    /* background: rgba(255,255,255,0.95);
+    border-bottom: 2px solid #2f7d32; */
   }
 
   .page-header h1 {
     font-size: 1.25rem;
+    color: white;
   }
 
   .page-header button:not(.menu-btn) {
@@ -94,7 +101,8 @@
     display: block;
 
     background: transparent;
-    color: var(--color-text);
+    /* color: var(--color-text); */
+    color: white;
 
     border: none;
     box-shadow: none;
@@ -110,6 +118,11 @@
     background: transparent;
     transform: none;
     box-shadow: none;
+  }
+
+  .page-header--glass {
+    background: rgba(47, 125, 50, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .desktop-label {

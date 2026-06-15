@@ -25,7 +25,7 @@ function HeaderBar({ onMenuClick }) {
   const titles = {
     '/': '🏠 Accueil',
     '/fanomanana-litorjia/vakiteny': '📖 Fanomanana vakiteny',
-    '/fanomanana-litorjia/hira': '📖 Fanomanana hira',
+    '/fanomanana-litorjia/hira': '🎵 Fanomanana hira',
     '/kalandrie': 'Kalendrie',
   };
 
