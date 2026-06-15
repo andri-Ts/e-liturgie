@@ -1,9 +1,10 @@
 .lecture-page {
-  min-height: 100vh;
+  /* min-height: 100vh; */
 
   background: var(--color-bg);
 
-  padding: var(--space-md);
+  /* padding: var(--space-md); */
+  /* padding: 0; */
   /* padding: 1rem 1rem; */
 
   display: flex;
@@ -119,7 +120,7 @@
 
 @media (max-width: 1024px) {
   .lecture-page {
-    padding: 0.75rem;
+    /* padding: 0.75rem; */
   }
 
   .lectures-section {
