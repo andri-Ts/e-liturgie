@@ -7,6 +7,7 @@ import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
 import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/elementRender/ElementRender';
 import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
+import { mockElementsLiturgie } from '../../mocks/mockElementsLiturgie';
 
 function LiturgiePage() {
   const {
@@ -20,6 +21,11 @@ function LiturgiePage() {
   const [isValidate, setIsValidate] = useState(false); // validation pdf
 
   // console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
+
+  // pour tester
+  const loadDemoData = () => {
+    setElements(mockElementsLiturgie);
+  };
 
   // State warning pour ne pas perdre de données
   useEffect(() => {
@@ -78,6 +84,8 @@ function LiturgiePage() {
 
   return (
     <section className="liturgie-page">
+      <button onClick={loadDemoData}>Charger données de test</button>
+
       <form onSubmit={handleSubmit}>
         {/* <h2>Fanomamanana ny hira</h2> */}
         {/* ===================== */}
