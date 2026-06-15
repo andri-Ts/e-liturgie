@@ -20,6 +20,7 @@ function LiturgiePage() {
   const [isValidate, setIsValidate] = useState(false); // validation pdf
 
   // console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
+  console.log('elements: ', elements);
 
   // State warning pour ne pas perdre de données
   useEffect(() => {

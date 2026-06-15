@@ -1,4 +1,5 @@
 export function createLectureElements(data) {
+  console.log('createLectureElements', data);
   return [
     {
       id: crypto.randomUUID(),
