@@ -155,9 +155,7 @@ function LiturgiePage() {
         {/* 🔵 ACTIONS */}
         {/* ===================== */}
         <section className="actions">
-          <button onClick={handleAddChant} type="button">
-            + Hira
-          </button>
+          <button /*onClick={handleAddChant}*/ type="button">+ Hira</button>
 
           <button type="submit">Valider</button>
 
