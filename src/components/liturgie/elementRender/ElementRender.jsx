@@ -6,6 +6,7 @@ import { useElements } from '../../../context/ElementsContext';
 function ElementRender({ element }) {
   const { updateElement } = useElements(); // pour ecrire dans le formuliare du chant
 
+  // Affihcer le bon formulaire selon le type d'élément
   switch (element.type) {
     case 'lecture':
     case 'psaume':

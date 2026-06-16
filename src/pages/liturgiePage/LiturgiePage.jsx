@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
 import './liturgiePage.css';
 import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
@@ -14,8 +12,8 @@ import { useElements } from '../../context/ElementsContext';
 
 function LiturgiePage() {
   // Appel des variables contexts
-  const { infosLiturgie, setInfosLiturgie } = useInfos();
-  const { elements, setElements } = useElements();
+  const { infosLiturgie, setInfosLiturgie } = useInfos(); // useInfos() pour les infos globales
+  const { elements, setElements } = useElements(); // useElements() pour la gestion des élémentes(lectures+chants)
 
   // validation pdf
   const [isValidate, setIsValidate] = useState(false);
@@ -73,11 +71,7 @@ function LiturgiePage() {
   // -----------------------------
   const handleSaveLiturgie = async () => {
     try {
-      const payload = buildLiturgiePayload(
-        infosLiturgie,
-        lecturesDuJour,
-        elements,
-      );
+      const payload = buildLiturgiePayload(infosLiturgie, null, elements);
       console.log(payload);
 
       // const res = await createLiturgie(payload);
@@ -88,7 +82,7 @@ function LiturgiePage() {
   };
 
   // -----------------------------
-  // PDF
+  // Télécharger PDF
   // -----------------------------
   const handleValidate = () => {
     downloadPdf();
