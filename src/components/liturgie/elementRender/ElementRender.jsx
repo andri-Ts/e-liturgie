@@ -1,7 +1,6 @@
 import React from 'react';
 import LectureForm from '../lectureForm/LectureForm';
 import ChantForm from '../chantForm/ChantForm';
-import { useLiturgie } from '../../../context/LiturgieContext';
 import { useElements } from '../../../context/ElementsContext';
 
 function ElementRender({ element }) {

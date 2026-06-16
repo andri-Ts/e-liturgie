@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 // Création du contexte (vide au départ)
-export const LecturesContext = useContext();
+export const LecturesContext = createContext();
 
 // Provider: composant qui va distribuer les donnés
 export function LecturesContextProvider({ children }) {

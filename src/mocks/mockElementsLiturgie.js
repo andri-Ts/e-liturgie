@@ -1,5 +1,3 @@
-import { useLiturgie } from '../context/LiturgieContext';
-
 // const { lecturesDuJour } = useLiturgie();
 
 export const mockElementsLiturgie = [

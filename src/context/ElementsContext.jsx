@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 // Créer le context (vide)
-export const ElementsContext = useContext();
+export const ElementsContext = createContext();
 
 // Provider: composant qui va distribuer les données et foncitons CRUD
 export function ElementsContextProvider({ children }) {

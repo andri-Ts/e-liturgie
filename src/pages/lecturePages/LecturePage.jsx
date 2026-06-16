@@ -5,7 +5,6 @@ import { data, Link, useNavigate } from 'react-router-dom';
 import apiRequest from '../../services/apiRequest';
 import InfosForm from '../../components/liturgie/infosForm/InfosForm';
 import { buildLectures } from '../../utils/buildLectures';
-import { useLiturgie } from '../../context/LiturgieContext';
 import { getLectures } from '../../services/liturgieService';
 import { getLecturesFallBackUrl } from '../../utils/getLecturesFallBackUrl';
 import { useLectures } from '../../context/LecturesContext';
@@ -13,7 +12,8 @@ import { useInfos } from '../../context/InfosContext';
 
 function LecturePage() {
   // infos globales formulaire
-  const { lecturesDuJour, initLiturgieData } = useLectures();
+  const { lecturesDuJour, setLecturesDuJour, setIsLoading, setError } =
+    useLectures();
   const { infosLiturgie, setInfosLiturgie } = useInfos();
   const nav = useNavigate();
 
@@ -27,22 +27,32 @@ function LecturePage() {
       lecturesDuJour.vakiteny2 === null ||
       lecturesDuJour.vakiteny3 === null);
 
-  // submit formulaire
+  // Récupé
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Récup infos du vakiteny avec api
+    // Récupéré les lectures de l'API
     try {
+      // Ajouter feedback utilisateur
+      setIsLoading(true);
+      setError(null);
+
       const infosGenLectures = await getLectures(infosLiturgie.dateMesse);
       console.log(infosGenLectures);
 
-      initLiturgieData(infosGenLectures); // initialise les elements de la liturgie selon les données de l'apiLecture
+      // Stocker les données dans le context
+      setLecturesDuJour(infosGenLectures);
+
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      // Affiche l'erreur à l'utilisateur
+      setError(error.message || 'Erreur lors de la récupération des letcures');
+      setIsLoading(false);
     }
   };
 
-  // pour envoyer les data du formulaire vers la page suivante
+  // Naviguer page suivant
   const handleNext = () => {
     nav('/fanomanana-litorjia/hira');
   };

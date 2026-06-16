@@ -1,6 +1,5 @@
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { useLiturgie } from '../context/LiturgieContext';
 
 export default async function downloadPdf() {
   const input = document.querySelector('.pdf-container');
