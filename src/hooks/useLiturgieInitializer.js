@@ -30,7 +30,7 @@ export function useLiturgieInitializer() {
       const elementsDeBase = buildLiturgieElements(infosGenLectures);
       console.log('Élements créés:', elementsDeBase);
 
-      // Step 4:  Stocker les éléments dans le context
+      // Step 4: Stocker les éléments dans le context
       setAllElements(elementsDeBase);
 
       // Feedback utilisateur

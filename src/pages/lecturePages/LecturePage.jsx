@@ -9,13 +9,17 @@ import { getLectures } from '../../services/liturgieService';
 import { getLecturesFallBackUrl } from '../../utils/getLecturesFallBackUrl';
 import { useLectures } from '../../context/LecturesContext';
 import { useInfos } from '../../context/InfosContext';
+import { useLiturgieInitializer } from '../../hooks/useLiturgieInitializer';
 
 function LecturePage() {
   // infos globales formulaire
-  const { lecturesDuJour, setLecturesDuJour, setIsLoading, setError } =
-    useLectures();
+  const { lecturesDuJour, initializeLiturgie } = useLiturgieInitializer(); // utiliser le custom hook
   const { infosLiturgie, setInfosLiturgie } = useInfos();
   const nav = useNavigate();
+
+  // Etat local pour les erreurs spécifiques à ce compoent
+  const [isInitializing, setIsInitializing] = useState(false);
+  const [localError, setLocalError] = useState(null);
 
   // formatage des données api lectures en tab
   const formattedLectures = buildLectures(lecturesDuJour);
@@ -64,6 +68,14 @@ function LecturePage() {
         setInfosLiturgie={setInfosLiturgie}
         onSubmit={handleSubmit}
       />
+
+      {/* Affichier les erreurs si besoin */}
+      {localError && <div className="error-message">{localError}</div>}
+
+      {/* Afficher un spinner pendant el chargement */}
+      {isInitializing && (
+        <div className="loading-spinner">Chargement des lectures...</div>
+      )}
 
       {lecturesDuJour && (
         <section className="lectures-section">
