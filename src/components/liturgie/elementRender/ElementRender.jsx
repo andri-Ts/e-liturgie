@@ -10,7 +10,7 @@ function ElementRender({ element }) {
   switch (element.type) {
     case 'lecture':
     case 'psaume':
-      return <LectureForm element={element} />;
+      return <LectureForm element={element} updateElement={updateElement} />;
 
     case 'chant':
       return <ChantForm element={element} updateElement={updateElement} />;
