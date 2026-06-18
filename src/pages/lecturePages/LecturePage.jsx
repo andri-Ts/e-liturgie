@@ -37,22 +37,20 @@ function LecturePage() {
 
     // Récupéré les lectures de l'API
     try {
-      // Ajouter feedback utilisateur
-      setIsLoading(true);
-      setError(null);
+      // Le hook gère: setIsLoading/setError, l'appel API, création des éléméments, stockage context
+      setIsInitializing(true);
+      setLocalError(null);
 
-      const infosGenLectures = await getLectures(infosLiturgie.dateMesse);
-      console.log(infosGenLectures);
+      await initializeLiturgie(infosLiturgie.dateMesse);
 
-      // Stocker les données dans le context
-      setLecturesDuJour(infosGenLectures);
-
-      setIsLoading(false);
+      setIsInitializing(false);
     } catch (error) {
       console.log(error);
       // Affiche l'erreur à l'utilisateur
-      setError(error.message || 'Erreur lors de la récupération des letcures');
-      setIsLoading(false);
+      setLocalError(
+        error.message || 'Erreur lors de la récupération des letcures',
+      );
+      setIsInitializing(false);
     }
   };
 

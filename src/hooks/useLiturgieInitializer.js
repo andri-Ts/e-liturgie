@@ -13,7 +13,7 @@ export function useLiturgieInitializer() {
 
   // Fonction pour init une liturgie:
   // 1- appelle l'API 2- créer les éléments de base 3- stocke tout dans les contexte
-  const initializerLiturgie = async (dateMesse) => {
+  const initializeLiturgie = async (dateMesse) => {
     try {
       setIsLoading(true);
       setError(null);
@@ -53,6 +53,6 @@ export function useLiturgieInitializer() {
   // Retourner le hook avec les élements nécessaires
   return {
     lecturesDuJour,
-    initializerLiturgie,
+    initializeLiturgie,
   };
 }
