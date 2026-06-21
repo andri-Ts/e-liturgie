@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
 
 // Créer le context (vide)
 export const ElementsContext = createContext();
@@ -8,17 +8,27 @@ export function ElementsContextProvider({ children }) {
   // Etats pour stocker tous les éléments de la liturgie
   const [elements, setElements] = useState([]);
 
-  // ===================================
-  // FONCTIONS : CRUD élément
-  // ===================================
-  const addElement = (element) => {
+  // =============================================
+  // MEMOIZATION #1 : addElement avec useCallback
+  // =============================================
+  // POURQUOI useCallback ?
+  // - Cette fonction est passée à ElementRender comme prop
+  // - Sans useCallback, une nouvelle fonction est créée à chaque render
+  // - Cela force ElementRender à re-render même si elle n'a pas changé
+  const addElement = useCallback((element) => {
     setElements((prev) => [...prev, element]);
-  };
+  }, []); // ← Pas de dépendances = fonction jamais recréée
 
-  // Supprimer un élélment avec l'ID
-  const removeElement = (id) => {
+  // =============================================
+  // MEMOIZATION #2 : removeElement avec useCallback
+  // =============================================
+  // POURQUOI useCallback ?
+  // - Même raison que addElement
+  // - Cette fonction est utilisée par les enfants
+  // - Avec useCallback, elle reste stable
+  const removeElement = useCallback((id) => {
     setElements((prev) => prev.filter((e) => e.id !== id)); // filter() parcours tous les éléments (avant) et supprimer celui avec l'id selscitonner
-  };
+  }, []);
 
   const updateElement = (id, data) => {
     setElements((prev) =>
@@ -30,12 +40,19 @@ export function ElementsContextProvider({ children }) {
     );
   };
 
-  // ===================================
-  // Fonction poiur rénitialiser
-  // ===================================
-  const setAllElements = (newElements) => {
-    setElements(newElements);
-  };
+  // =============================================
+  // MEMOIZATION #4 : setAllElements avec useCallback
+  // =============================================
+  // POURQUOI useCallback ?
+  // - Cette fonction est appelée depuis useLiturgieInitializer
+  // - Avec useCallback, elle reste stable
+  const setAllElements = useCallback(
+    // Fonction poiur rénitialiser
+    (newElements) => {
+      setElements(newElements);
+    },
+    [],
+  );
 
   return (
     <ElementsContext.Provider
