@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './lecturePage.css';
 import Lecture from '../../components/lecture/Lecture';
 import { data, Link, useNavigate } from 'react-router-dom';
@@ -21,26 +21,47 @@ function LecturePage() {
   const [isInitializing, setIsInitializing] = useState(false);
   const [localError, setLocalError] = useState(null);
 
+  // =============================================
+  // MEMOIZATION #1 : Formater les lectures
+  // =============================================
+  // Avec useMemo(), la fonction ne sera pas recalculer à CHAQUE render.
   // formatage des données api lectures en tab
-  const formattedLectures = buildLectures(lecturesDuJour);
+  const formattedLectures = useMemo(() => {
+    if (!lecturesDuJour) return [];
 
-  // variable pour savoir s'il y a un pb avec les lectures
-  const hasMissingLecture =
+    // DÉPENDANCES : - [lecturesDuJour] = recalculer si lecturesDuJour change ; - ne pas recalculer sinon
+    return buildLectures(lecturesDuJour);
+  }, [lecturesDuJour]);
+
+  // =============================================
+  // MEMOIZATION #2 : Vérifier les lectures manquantes
+  // =============================================
+  // - Cette vérification parcourt 3 propriétés de lecturesDuJour
+  // - Sans useMemo, ce calcul se ferait à CHAQUE render (inutile!)
+
+  const hasMissingLecture = useMemo(() => {
+    if (!lecturesDuJour) return false;
+
+    // Vérifier si l'une des 3 lectures est null
     lecturesDuJour &&
-    (lecturesDuJour.vakiteny1 === null ||
-      lecturesDuJour.vakiteny2 === null ||
-      lecturesDuJour.vakiteny3 === null);
+      (lecturesDuJour.vakiteny1 === null ||
+        lecturesDuJour.vakiteny2 === null ||
+        lecturesDuJour.vakiteny3 === null);
+  }, [lecturesDuJour]);
 
-  // Récupé
+  // =============================================
+  // FONCTION : Soumettre le formulaire
+  // =============================================
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Récupéré les lectures de l'API
     try {
-      // Le hook gère: setIsLoading/setError, l'appel API, création des éléméments, stockage context
+      // Feedback utilisateur : on initialise
       setIsInitializing(true);
       setLocalError(null);
 
+      // Appeler le hook qui fait : API + créer éléments + stocker
       await initializeLiturgie(infosLiturgie.dateMesse);
 
       setIsInitializing(false);
@@ -54,7 +75,9 @@ function LecturePage() {
     }
   };
 
-  // Naviguer page suivant
+  // =============================================
+  // FONCTION : Naviguer vers la page suivante
+  // =============================================
   const handleNext = () => {
     nav('/fanomanana-litorjia/hira');
   };
