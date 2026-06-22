@@ -3,7 +3,7 @@ import '../elementRender/elementGlobal.css';
 import { useElements } from '../../../context/ElementsContext';
 
 function LectureForm({ element }) {
-  const { updateElement } = useElements;
+  const { updateElement } = useElements();
 
   // Récup données user de lecture
   const handleChangeRefLecture = (e) => {
