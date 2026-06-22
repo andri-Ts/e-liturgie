@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import LiturgieForm from '../../components/liturgieForm/LiturgieForm';
 import './liturgiePage.css';
 import downloadPdf from '../../utils/downloadPdf';
 import LiturgiePdfTemplate from '../../components/pdf/LiturgiePdfTemplate';
-import { useLiturgie } from '../../context/LiturgieContext';
 import ElementRender from '../../components/liturgie/elementRender/ElementRender';
 import { buildLiturgiePayload } from '../../utils/buildLiturgiePayload';
-import { createLiturgie } from '../../services/liturgieService';
+// import { createLiturgie } from '../../services/liturgieService';
 import { buildLiturgieElements } from '../../utils/buildLiturgieElements';
 import { mockElementsLiturgie } from '../../mocks/mockElementsLiturgie';
+import { useInfos } from '../../context/InfosContext';
+import { useElements } from '../../context/ElementsContext';
+import { useLiturgieValidator } from '../../hooks/useLiturgieValidator';
 
 function LiturgiePage() {
-  const {
-    infosLiturgie,
-    setInfosLiturgie,
-    lecturesDuJour,
-    elements,
-    setElements,
-    addElement,
-  } = useLiturgie(); // Context global
-  const [isValidate, setIsValidate] = useState(false); // validation pdf
+  // Appel des variables contexts
+  const { infosLiturgie, setInfosLiturgie } = useInfos(); // useInfos() pour les infos globales
+  const { elements, setElements } = useElements(); // useElements() pour la gestion des élémentes(lectures+chants)
+
+  // Custom hook de validation/sauvegarde de la liturgie
+  const { saveLiturgie, isSaving, saveError, saveSuccess } =
+    useLiturgieValidator();
+
+  // validation pdf
+  const [isValidate, setIsValidate] = useState(false);
 
   // console.log('lecturesDuJour LiturgiePage', lecturesDuJour);
   // console.log('elements: ', elements);
@@ -71,26 +72,20 @@ function LiturgiePage() {
   };
 
   // -----------------------------
-  // SAVE LITURGIE
+  // SAVE LITURGIE VERS API
   // -----------------------------
   const handleSaveLiturgie = async () => {
     try {
-      const payload = buildLiturgiePayload(
-        infosLiturgie,
-        lecturesDuJour,
-        elements,
-      );
-      console.log(payload);
-
-      // const res = await createLiturgie(payload);
-      console.log(res);
+      // Ce hook gère : validaiton des données, payload, appel api
+      await saveLiturgie();
+      setIsValidate(true);
     } catch (error) {
-      console.error(error);
+      console.error('Erreur lors de la sauvegarde: ', error);
     }
   };
 
   // -----------------------------
-  // PDF
+  // Télécharger PDF
   // -----------------------------
   const handleValidate = () => {
     downloadPdf();
@@ -104,18 +99,34 @@ function LiturgiePage() {
     e.preventDefault();
     // console.log(liturgieData);
     handleSaveLiturgie();
-    setIsValidate(true);
+    // setIsValidate(true);
   };
 
   return (
     <section className="liturgie-page">
-      {/*<button onClick={loadDemoData}>Charger données de test</button>*/}
+      {/* <button onClick={loadDemoData}>Charger données de test</button> */}
 
       <form onSubmit={handleSubmit}>
         {/* <h2>Fanomamanana ny hira</h2> */}
+
+        {/* Afficher les erreurs si besoin */}
+        {saveError && <div className="error-message">⚠️{saveError}</div>}
+
+        {/* Afficher message de succès */}
+        {saveSuccess && (
+          <div className="success-message">
+            ✅ Liturgie sauvegardée avec succes !
+          </div>
+        )}
+
+        {/* ✅ Afficher un spinner pendant la sauvegarde */}
+        {isSaving && (
+          <div className="loading-spinner">Sauvegarde en cours...</div>
+        )}
+
         {/* ===================== */}
         {/* 🔵 INFOS LITURGIQUES */}
-        {/* ===================== */}{' '}
+        {/* ===================== */}
         <section className="infos-liturgie">
           <div className="item">
             <label htmlFor="date">Daty</label>
@@ -151,6 +162,7 @@ function LiturgiePage() {
             />
           </div>
         </section>
+
         {/* ===================== */}
         {/*  ELEMENTS LITURGIE */}
         {/* ===================== */}
@@ -159,6 +171,7 @@ function LiturgiePage() {
             <ElementRender key={element.id} element={element} />
           ))}
         </section>
+
         {/* ===================== */}
         {/* 🔵 ACTIONS */}
         {/* ===================== */}
@@ -173,6 +186,7 @@ function LiturgiePage() {
             </button>
           )}
         </section>
+
         {/* ===================== */}
         {/* PDF HIDDEN */}
         {/* ===================== */}

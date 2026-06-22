@@ -1,10 +1,10 @@
 import React from 'react';
 import './lecture.css';
 import { getLecturesFallBackUrl } from '../../utils/getLecturesFallBackUrl';
-import { useLiturgie } from '../../context/LiturgieContext';
+import { useInfos } from '../../context/InfosContext';
 
 function Lecture({ titre, ref, texte }) {
-  const { infosLiturgie } = useLiturgie();
+  const { infosLiturgie } = useInfos();
 
   return (
     <article className="lecture-card">

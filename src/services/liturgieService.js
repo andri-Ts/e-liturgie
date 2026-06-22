@@ -10,7 +10,7 @@ export async function getLectures(dateMesse) {
 }
 
 // poster la liturgie crée
-export async function createLiturgie(payload) {
+export async function postLiturgie(payload) {
   const response = await apiRequest.post('/Messe/Create', payload);
 
   return response.data;

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../elementRender/elementGlobal.css';
-import { useLiturgie } from '../../../context/LiturgieContext';
+import { useElements } from '../../../context/ElementsContext';
 
 function LectureForm({ element }) {
-  const { updateElement } = useLiturgie();
+  const { updateElement } = useElements();
 
   // Récup données user de lecture
   const handleChangeRefLecture = (e) => {
